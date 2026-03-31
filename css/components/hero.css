@@ -1,0 +1,138 @@
+/* ========== HERO ========== */
+.njs-hero {
+  background-color: var(--bp-hero-bg); /* #ECE6DD */
+  overflow: hidden;
+}
+
+.njs-hero__content {
+  padding: 40px 40px 80px 40px;
+  padding-top: calc(var(--bp-header-height) + 40px);
+}
+
+/* Title: flex-wrap layout with mixed weights */
+.njs-hero__title {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 16px;
+  column-gap: 32px;
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 100px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #141414;
+  max-width: 1130px;
+  text-align: left;
+}
+
+/* Base word span */
+.njs-hero__word {
+  display: inline-block;
+}
+
+/* Regular weight: "We", "are", "company" */
+.njs-hero__word--regular {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Italic: "a", "and" */
+.njs-hero__word--italic {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium weight: "strategy-led", "branding", "experiences", "." */
+.njs-hero__word--medium {
+  font-family: var(--bp-font-monument);
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Remove old line-based layout */
+.njs-hero__title .njs-line,
+.njs-hero__title .njs-line__inner {
+  display: contents;
+}
+
+/* Subtitle / taglines */
+.njs-hero__subtitle {
+  text-align: left;
+  margin-top: 30px;
+  font-family: var(--bp-font-monument);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--bp-black);
+  opacity: 0.6;
+}
+
+.njs-hero__taglines {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.njs-hero__tagline {
+  font-family: var(--bp-font-gazpacho);
+  font-size: 18px;
+  font-style: italic;
+}
+
+/* Hero image */
+.njs-hero__image {
+  max-width: 1360px;
+  height: 850px;
+  margin: 0 40px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: var(--bp-sora); /* #ABB6B3 */
+}
+
+.njs-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Wordmark overlay at bottom of hero image */
+.njs-hero__wordmark {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.njs-hero__wordmark-text {
+  font-family: var(--bp-font-schmalfette);
+  font-size: clamp(80px, 12vw, 200px);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.85;
+  color: var(--bp-black);
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.njs-hero__wordmark-text span {
+  display: inline-block;
+}
+
+.njs-hero__wordmark-diamond {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.4em;
+  vertical-align: middle;
+  margin: 0 0.1em;
+}

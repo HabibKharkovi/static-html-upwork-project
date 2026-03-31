@@ -1,0 +1,112 @@
+/* ========== OUR APPROACH ========== */
+.njs-approach {
+  background-color: #2D2D32;
+  color: var(--bp-off-white);
+  padding: 120px 40px;
+}
+
+/* Let the component's own padding take effect */
+.njs-approach .njs-container {
+  max-width: none;
+  padding: 0;
+}
+
+.njs-approach__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Left label */
+.njs-approach__label {
+  font-family: var(--bp-font-gazpacho);
+  font-weight: 700;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #ededed;
+}
+
+.njs-approach__label-line {
+  display: block;
+}
+
+/* Right content column */
+.njs-approach__content {
+  width: 900px;
+}
+
+/* Large heading */
+.njs-approach__heading {
+  font-family: var(--bp-font-schmalfette);
+  font-weight: 700;
+  font-size: 160px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 6.4px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Heading lines */
+.njs-approach__heading-line {
+  color: #ededed;
+  display: block;
+}
+
+/* Muted lines: "Simple sells." and "Nobody cares." */
+.njs-approach__heading-line--muted {
+  color: rgba(237, 237, 237, 0.65);
+}
+
+/* Default line display */
+.njs-approach__heading .njs-line,
+.njs-approach__heading .njs-line__inner {
+  display: block;
+}
+
+/* Circle image */
+.njs-approach__circle {
+  width: 555px;
+  height: 555px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.njs-approach__circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Body text */
+.njs-approach__body {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
+  text-transform: uppercase;
+  color: #ededed;
+  width: 785px;
+  max-width: 100%;
+  text-indent: 120px;
+  margin-top: 40px;
+}
+
+.njs-approach__body p + p {
+  margin-top: 40px;
+}
+
+/* Italic words: product hypothesis, possible narratives, what matters most */
+.njs-approach__body em,
+.njs-approach__body i {
+  font-style: italic;
+}
+
+/* Bold: "create brand ecosystems" */
+.njs-approach__body strong,
+.njs-approach__body b {
+  font-weight: 500;
+}

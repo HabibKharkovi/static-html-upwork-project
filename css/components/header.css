@@ -1,0 +1,93 @@
+/* ========== HEADER ========== */
+.njs-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 100;
+  background-color: transparent;
+  transition: transform 0.4s var(--bp-ease-out),
+              background-color 0.3s ease,
+              backdrop-filter 0.3s ease;
+}
+
+.njs-header--scrolled {
+  background-color: rgba(237, 237, 237, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.njs-header--hidden {
+  transform: translateY(-100%);
+}
+
+.njs-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 40px;
+}
+
+.njs-header__logo {
+  display: flex;
+  align-items: center;
+  z-index: 101;
+}
+
+.njs-header__logo svg,
+.njs-header__logo img {
+  height: 28px;
+  width: auto;
+}
+
+/* Hamburger: two horizontal lines, 24px wide, 1.5px thick */
+.njs-header__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  gap: 6px;
+  z-index: 101;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.njs-header__hamburger-line {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background-color: var(--bp-black);
+  transition: transform 0.4s var(--bp-ease-out),
+              opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hide the third line — Figma shows only two lines */
+.njs-header__hamburger-line:nth-child(3) {
+  display: none;
+}
+
+/* Open state: X from two lines */
+.njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* When nav overlay is open on dark bg */
+.njs-header.is-nav-open .njs-header__hamburger-line {
+  background-color: var(--bp-off-white);
+}
+
+.njs-header.is-nav-open .njs-header__logo svg path,
+.njs-header.is-nav-open .njs-header__logo img {
+  filter: invert(1);
+}

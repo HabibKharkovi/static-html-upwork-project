@@ -1,0 +1,240 @@
+/* ========== OUR SERVICES ========== */
+.njs-services {
+  background-color: #BDA575; /* var(--bp-gold) */
+  color: var(--bp-black);
+  padding: 120px 40px;
+  position: relative;
+}
+
+/* Component handles its own padding via .njs-services rule above */
+
+/* Scroll-driven sticky container */
+.njs-services__scroll-container {
+  height: 300vh;
+  position: relative;
+}
+
+.njs-services__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Section title */
+.njs-services__title {
+  font-family: var(--bp-font-gazpacho);
+  font-weight: 700;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 80px;
+}
+
+/* Legacy label (same role as title) */
+.njs-services__label {
+  font-family: var(--bp-font-gazpacho);
+  font-weight: 700;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 80px;
+}
+
+/* Main layout: flex between left accordion and right detail */
+.njs-services__inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  gap: 0;
+}
+
+/* ---- Left panel: 670px ---- */
+.njs-services__left {
+  width: 670px;
+  flex-shrink: 0;
+}
+
+.njs-services__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Separator lines */
+.njs-services__separator {
+  height: 0;
+  border-top: 1px solid rgba(237, 237, 237, 0.35);
+}
+
+.njs-services__item {
+  cursor: pointer;
+  transition: opacity var(--bp-duration-fast) ease;
+}
+
+/* 48px gap between separator and item content */
+.njs-services__item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 0;
+}
+
+.njs-services__item-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Number (inactive): 40px font, 48px width */
+.njs-services__item-number {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 40px;
+  min-width: 48px;
+  transition: opacity var(--bp-duration-fast) ease;
+}
+
+.njs-services__item-num-text {
+  display: inline;
+}
+
+/* Icon (diamond) for active item: 48px */
+.njs-services__item-icon {
+  display: none;
+  font-size: 48px;
+}
+
+.njs-services__item.is-active .njs-services__item-icon {
+  display: block;
+}
+
+.njs-services__item.is-active .njs-services__item-num-text {
+  display: none;
+}
+
+/* Service name: ABC Monument Grotesk Regular, 56px, uppercase */
+.njs-services__item-name {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 56px;
+  text-transform: uppercase;
+  line-height: 56px;
+  opacity: 0.3;
+  transition: opacity var(--bp-duration-fast) ease;
+}
+
+.njs-services__item.is-active .njs-services__item-name {
+  opacity: 1;
+}
+
+/* Chevron: 40px */
+.njs-services__item-chevron {
+  font-family: var(--bp-font-monument);
+  font-size: 40px;
+  transition: transform var(--bp-duration-fast) ease;
+}
+
+/* Inactive: down arrow (v) — Active: right arrow (>) rotated */
+.njs-services__item.is-active .njs-services__item-chevron {
+  transform: rotate(-90deg);
+}
+
+/* Accordion detail expands under active item */
+.njs-services__item-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--bp-ease-out),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+
+.njs-services__item.is-active .njs-services__item-detail {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.njs-services__item-description {
+  font-family: var(--bp-font-gazpacho);
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.4;
+  padding-top: 20px;
+  padding-left: 68px;
+  max-width: 500px;
+}
+
+.njs-services__item-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+  padding-left: 68px;
+}
+
+.njs-services__item-category {
+  font-family: var(--bp-font-monument);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border: 1px solid rgba(20, 20, 20, 0.3);
+  border-radius: 20px;
+}
+
+/* ---- Right panel: 555px ---- */
+.njs-services__visual {
+  width: 555px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+/* Visual panel wraps image + text per service */
+.njs-services__visual-panel {
+  display: none;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.njs-services__visual-panel.is-active {
+  display: flex;
+}
+
+.njs-services__visual-image {
+  width: 555px;
+  height: 416px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.njs-services__visual-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Headline below image on right */
+.njs-services__visual-headline {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.njs-services__visual-headline strong {
+  font-weight: 500;
+}
+
+/* Categories on right panel */
+.njs-services__visual-categories {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 24px;
+}

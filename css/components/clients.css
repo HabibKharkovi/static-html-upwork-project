@@ -1,0 +1,94 @@
+/* ========== OUR CLIENTS ========== */
+.njs-clients {
+  background-color: #141414; /* var(--bp-black) */
+  color: var(--bp-off-white);
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Component handles its own padding via .njs-clients rule above */
+
+/* Header wrapper */
+.njs-clients__header {
+  width: 1360px;
+  max-width: calc(100% - 80px);
+  margin-bottom: 40px;
+  padding: 0 40px;
+}
+
+/* Title: "Our Clients" */
+.njs-clients__title {
+  font-family: var(--bp-font-gazpacho);
+  font-size: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #ededed;
+}
+
+/* "Clients" = Medium */
+.njs-clients__title--medium {
+  font-weight: 500;
+}
+
+/* Grid: 4 columns, full 1440px width */
+.njs-clients__grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1440px;
+  max-width: 100%;
+}
+
+/* Each logo cell: 150px tall, 1/4 width, centered content */
+.njs-clients__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 150px;
+  position: relative;
+}
+
+/* Horizontal separators between rows using box-shadow on bottom edge */
+/* Using border-top for rows after the first */
+.njs-clients__item {
+  border-bottom: 0.5px solid #c0bcb9;
+}
+
+/* First row: top border */
+.njs-clients__item:nth-child(-n+4) {
+  border-top: 0.5px solid #c0bcb9;
+}
+
+/* Vertical separators between columns */
+.njs-clients__item:not(:nth-child(4n)) {
+  border-right: 0.5px solid #c0bcb9;
+}
+
+/* Logo images: use mask-image with background-color */
+.njs-clients__item img,
+.njs-clients__item svg {
+  max-width: 120px;
+  max-height: 40px;
+  /* Use mask-image approach */
+  background-color: #c0bcb9;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color var(--bp-duration-fast) ease;
+}
+
+/* For inline <img> elements, use filter approach as fallback */
+.njs-clients__item img {
+  filter: brightness(0) invert(0.78);
+  transition: filter var(--bp-duration-fast) ease,
+              opacity var(--bp-duration-fast) ease;
+}
+
+.njs-clients__item:hover img {
+  filter: brightness(0) invert(1);
+}

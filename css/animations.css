@@ -1,0 +1,86 @@
+/* Line reveal animation */
+.njs-line {
+  overflow: hidden;
+  display: block;
+}
+
+.njs-line__inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform var(--bp-duration-slow) var(--bp-ease-out);
+}
+
+.is-revealed .njs-line__inner {
+  transform: translateY(0);
+}
+
+/* Stagger delays for line reveals */
+.njs-line:nth-child(1) .njs-line__inner { transition-delay: 0s; }
+.njs-line:nth-child(2) .njs-line__inner { transition-delay: 0.08s; }
+.njs-line:nth-child(3) .njs-line__inner { transition-delay: 0.16s; }
+.njs-line:nth-child(4) .njs-line__inner { transition-delay: 0.24s; }
+.njs-line:nth-child(5) .njs-line__inner { transition-delay: 0.32s; }
+.njs-line:nth-child(6) .njs-line__inner { transition-delay: 0.4s; }
+.njs-line:nth-child(7) .njs-line__inner { transition-delay: 0.48s; }
+.njs-line:nth-child(8) .njs-line__inner { transition-delay: 0.56s; }
+
+/* Fade-up reveal */
+.njs-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--bp-duration-normal) var(--bp-ease-out),
+              transform var(--bp-duration-normal) var(--bp-ease-out);
+}
+
+.njs-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger items (e.g., client logos) */
+.njs-stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--bp-duration-normal) var(--bp-ease-out),
+              transform var(--bp-duration-normal) var(--bp-ease-out);
+}
+
+.njs-stagger-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--item-index, 0) * 0.05s);
+}
+
+/* Scale-in for images */
+.njs-scale-reveal {
+  overflow: hidden;
+}
+
+.njs-scale-reveal img {
+  transform: scale(1.15);
+  transition: transform 1.2s var(--bp-ease-out);
+}
+
+.njs-scale-reveal.is-revealed img {
+  transform: scale(1);
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .njs-line__inner {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .njs-reveal,
+  .njs-stagger-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .njs-scale-reveal img {
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,76 @@
+/* ========== BODY CONTENT ========== */
+.njs-body-content {
+  background-color: var(--bp-light-tan); /* #E6DFD6 */
+  padding: 80px 40px;
+}
+
+/* Let the component's own padding take effect */
+.njs-body-content .njs-container {
+  max-width: none;
+  padding: 0;
+}
+
+/* ---- Top section: large indented heading ---- */
+.njs-body-content__text {
+  width: 1130px;
+  max-width: 100%;
+}
+
+.njs-body-content__heading {
+  font-family: var(--bp-font-gazpacho);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1; /* leading-none */
+  letter-spacing: -1.12px;
+  color: var(--bp-black);
+  width: 1130px;
+  max-width: 100%;
+}
+
+.njs-body-content__indent {
+  display: inline-block;
+  width: 226px;
+}
+
+/* ---- Bottom section: right-aligned block ---- */
+.njs-body-content__card {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
+  margin-top: 100px;
+}
+
+.njs-body-content__card-image {
+  width: 555px;
+  height: 436px;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.njs-body-content__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.njs-body-content__card-title {
+  font-family: var(--bp-font-monument);
+  font-weight: 500;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: var(--bp-black);
+  width: 555px;
+}
+
+.njs-body-content__card-body {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--bp-black);
+  width: 555px;
+}

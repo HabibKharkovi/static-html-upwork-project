@@ -1,0 +1,25 @@
+:root {
+  --bp-black: #141414;
+  --bp-off-white: #ededed;
+  --bp-cream: #eee2c8;
+  --bp-sora: #abb6b3;
+  --bp-gold: #bda575;
+  --bp-blue-black: #2d2d32;
+  --bp-light-grey: #c0bcb9;
+  --bp-light-tan: #e6dfd6;
+  --bp-hero-bg: #ece6dd;
+
+  --bp-font-monument: 'ABC Monument Grotesk', 'Monument Grotesk', sans-serif;
+  --bp-font-gazpacho: 'Gazpacho', Georgia, serif;
+  --bp-font-schmalfette: 'Schmalfette Grotesk Trial Bd Cond', 'Schmalfette Grotesk', sans-serif;
+
+  --bp-header-height: 80px;
+  --bp-section-pad-x: 40px;
+  --bp-section-pad-y: 120px;
+
+  --bp-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --bp-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --bp-duration-fast: 0.3s;
+  --bp-duration-normal: 0.6s;
+  --bp-duration-slow: 1s;
+}

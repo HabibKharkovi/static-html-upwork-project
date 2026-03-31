@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'ABC Monument Grotesk';
+  src: url('../fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABC Monument Grotesk';
+  src: url('../fonts/ABCMonumentGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monument Grotesk';
+  src: url('../fonts/MonumentGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monument Grotesk';
+  src: url('../fonts/MonumentGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monument Grotesk';
+  src: url('../fonts/MonumentGrotesk-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gazpacho';
+  src: url('../fonts/GazpachoRegular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gazpacho';
+  src: url('../fonts/GazpachoMedium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gazpacho';
+  src: url('../fonts/GazpachoBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Schmalfette Grotesk Trial Bd Cond';
+  src: url('../fonts/SchmalfetteGrotesk-Trial.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Schmalfette Grotesk';
+  src: url('../fonts/SchmalfetteGrotesk.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,150 @@
+/* ========== NAV OVERLAY ========== */
+.njs-nav-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--bp-blue-black);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.6s var(--bp-ease-out);
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.njs-nav-overlay.is-open {
+  transform: translateX(0);
+}
+
+/* Paisley pattern background */
+.njs-nav-overlay__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.njs-nav-overlay__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.njs-nav-overlay__inner {
+  width: 100%;
+  padding: 120px 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Nav links: match footer nav style — Schmalfette Bold Condensed */
+.njs-nav-overlay__links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.njs-nav-overlay__link {
+  font-family: var(--bp-font-schmalfette);
+  font-weight: 700;
+  font-size: 100px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--bp-cream);
+  line-height: 1;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s var(--bp-ease-out),
+              transform 0.5s var(--bp-ease-out);
+}
+
+.njs-nav-overlay.is-open .njs-nav-overlay__link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(1) { transition-delay: 0.1s; }
+.njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(2) { transition-delay: 0.15s; }
+.njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(3) { transition-delay: 0.2s; }
+.njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(4) { transition-delay: 0.25s; }
+.njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(5) { transition-delay: 0.3s; }
+.njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(6) { transition-delay: 0.35s; }
+
+.njs-nav-overlay__link:hover {
+  opacity: 0.6 !important;
+}
+
+/* Right side contact info */
+.njs-nav-overlay__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--bp-ease-out) 0.4s,
+              transform 0.5s var(--bp-ease-out) 0.4s;
+}
+
+.njs-nav-overlay.is-open .njs-nav-overlay__contact {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.njs-nav-overlay__contact-label {
+  font-family: var(--bp-font-monument);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--bp-cream);
+}
+
+.njs-nav-overlay__contact a {
+  font-family: var(--bp-font-monument);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--bp-cream);
+  transition: opacity var(--bp-duration-fast) ease;
+}
+
+.njs-nav-overlay__contact a:hover {
+  opacity: 0.7;
+}
+
+/* Social icons in overlay */
+.njs-nav-overlay__social {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.njs-nav-overlay__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--bp-cream);
+  color: #2D2D32;
+  text-decoration: none;
+  transition: opacity var(--bp-duration-fast) ease;
+}
+
+.njs-nav-overlay__social a:hover {
+  opacity: 0.8;
+}
+
+.njs-nav-overlay__social a svg,
+.njs-nav-overlay__social a img {
+  width: 20px;
+  height: 20px;
+}
