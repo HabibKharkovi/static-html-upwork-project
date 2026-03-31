@@ -41,12 +41,11 @@
   font-family: var(--bp-font-schmalfette);
   font-weight: 700;
   font-size: 160px;
-  line-height: 1;
+  line-height: 0.9;
   text-transform: uppercase;
   letter-spacing: 6.4px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 /* Heading lines */
@@ -109,6 +108,7 @@
 
 .njs-approach__body p + p {
   margin-top: 40px;
+  text-indent: initial;
 }
 
 /* Italic words: product hypothesis, possible narratives, what matters most */

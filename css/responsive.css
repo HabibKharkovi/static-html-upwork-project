@@ -289,7 +289,6 @@
   .njs-origin__heading {
     font-size: 56px;
     letter-spacing: 2px;
-    gap: 12px;
   }
 
   .njs-approach__body,
@@ -526,13 +525,16 @@
   .njs-origin__heading {
     font-size: 56px;
     letter-spacing: 2.24px;
-    gap: 8px;
   }
 
   .njs-approach__circle {
     width: 204px;
     height: 204px;
-    margin-left: 40px;
+    margin-left: 80px;
+  }
+
+  .njs-approach__body {
+    margin-left: 80px;
   }
 
   .njs-approach__body,
