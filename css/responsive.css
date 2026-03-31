@@ -458,10 +458,6 @@
     height: 50px;
   }
 
-  .njs-origin__heading-line--pills {
-    gap: 12px;
-  }
-
   .njs-footer {
     min-height: auto;
   }
@@ -638,11 +634,30 @@
   .njs-services__item.is-active .njs-services__item-chevron--down {
     transform: rotate(180deg);
   }
-
+  .njs-origin__body:last-child {
+    max-width: 260px;
+  }
+  .njs-origin__body{
+    text-indent: unset;
+  }
+  .njs-origin__body-content {
+    text-indent: 44px;
+  }
+  .njs-origin__heading-line--pills {
+      gap: 8px;
+  }
+  .njs-origin__body .mobile-only {
+    display: block;
+  }
+  .njs-origin__body .desktop-only {
+    display: none;
+  }
   .njs-services__item-header {
     padding: 24px 0;
   }
-
+  .njs-origin__body {
+      margin: 40px 0 0;
+  }
   .njs-services__item-description {
     font-size: 16px;
     padding-left: 30px;
