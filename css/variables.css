@@ -22,4 +22,6 @@
   --bp-duration-fast: 0.3s;
   --bp-duration-normal: 0.6s;
   --bp-duration-slow: 0.8s;
+  --bp-ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --bp-duration-extra-slow: 1.4s;
 }

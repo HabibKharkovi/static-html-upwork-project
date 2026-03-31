@@ -5,9 +5,25 @@ export function initParallax() {
   const speed = 0.2;
   let ticking = false;
 
+  function updateApproachCircles(windowHeight) {
+    const circles = document.querySelectorAll('.njs-approach__circle');
+    circles.forEach(circle => {
+      const rect = circle.getBoundingClientRect();
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+        const overlay = circle.querySelector('.njs-approach__circle-overlay');
+        if (overlay) {
+          overlay.style.transform = `translate3d(0, ${(progress - 0.5) * 30}px, 0)`;
+        }
+      }
+    });
+  }
+
   function updateParallax() {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
+
+    updateApproachCircles(windowHeight);
 
     parallaxSections.forEach((section) => {
       const rect = section.getBoundingClientRect();

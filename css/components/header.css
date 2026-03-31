@@ -8,8 +8,8 @@
   z-index: 100;
   background-color: transparent;
   transition: transform 0.4s var(--bp-ease-out),
-              background-color 0.3s var(--bp-ease-out),
-              backdrop-filter 0.3s var(--bp-ease-out);
+              background-color 0.4s ease,
+              backdrop-filter 0.4s ease;
 }
 
 .njs-header--scrolled {
@@ -61,7 +61,7 @@
 .njs-header__hamburger-line {
   display: block;
   width: 48px;
-  height: 1.5px;
+  height: 1px;
   background-color: var(--bp-black);
   transition: transform 0.4s var(--bp-ease-out),
               opacity 0.3s var(--bp-ease-out);
@@ -73,13 +73,13 @@
   display: none;
 }
 
-/* Open state: X from two lines (gap/2 = 6px + line-height/2 ≈ 6.75px) */
+/* Open state: X from two lines ((gap + lineHeight) / 2 = (12+1)/2 = 6.5px) */
 .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
-  transform: translateY(6.75px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
 }
 
 .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
-  transform: translateY(-6.75px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* When nav overlay is open on dark bg */

@@ -70,10 +70,12 @@
 .njs-clients__item img {
   max-width: 160px;
   max-height: 80px;
-  filter: brightness(0) invert(0.78);
-  transition: filter var(--bp-duration-fast) ease;
+  filter: brightness(0) invert(0.75) sepia(0.08) hue-rotate(340deg) saturate(0.4);
+  transition: filter var(--bp-duration-fast) ease,
+              transform var(--bp-duration-fast) var(--bp-ease-out);
 }
 
 .njs-clients__item:hover img {
   filter: brightness(0) invert(1);
+  transform: scale(1.05);
 }

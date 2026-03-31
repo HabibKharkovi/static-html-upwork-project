@@ -63,13 +63,22 @@
   text-decoration: none;
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.5s var(--bp-ease-out),
-              transform 0.5s var(--bp-ease-out);
+  transition: opacity 0.3s var(--bp-ease-out),
+              transform 0.3s var(--bp-ease-out);
 }
+
+/* Closing reverse stagger */
+.njs-nav-overlay__link:nth-child(1) { transition-delay: 0.15s; }
+.njs-nav-overlay__link:nth-child(2) { transition-delay: 0.12s; }
+.njs-nav-overlay__link:nth-child(3) { transition-delay: 0.09s; }
+.njs-nav-overlay__link:nth-child(4) { transition-delay: 0.06s; }
+.njs-nav-overlay__link:nth-child(5) { transition-delay: 0.03s; }
 
 .njs-nav-overlay.is-open .njs-nav-overlay__link {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.5s var(--bp-ease-out),
+              transform 0.5s var(--bp-ease-out);
 }
 
 .njs-nav-overlay.is-open .njs-nav-overlay__link:nth-child(1) { transition-delay: 0.1s; }

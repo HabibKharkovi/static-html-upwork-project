@@ -96,10 +96,6 @@
   transition: opacity var(--bp-duration-fast) var(--bp-ease-out);
 }
 
-.njs-services__item-num-text {
-  display: inline;
-}
-
 /* Icon (diamond) for active item: 48px */
 .njs-services__item-icon {
   display: none;
@@ -119,7 +115,7 @@
   justify-content: center;
 }
 
-.njs-services__item.is-active .njs-services__item-num-text {
+.njs-services__item.is-active .njs-services__item-number {
   display: none;
 }
 

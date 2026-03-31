@@ -77,7 +77,7 @@
         </h1>
       </div>
 
-      <div class="njs-hero__image njs-scale-reveal" js-reveal>
+      <div class="njs-hero__image njs-scale-reveal njs-reveal-image" js-reveal>
         <img src="images/hero-image.jpg" alt="Babe Paisley brand experience" width="1440" height="850" loading="eager">
       </div>
     </section>
@@ -92,11 +92,13 @@
         </div>
 
         <div class="njs-body-content__card">
-          <div class="njs-body-content__card-image" js-reveal>
+          <div class="njs-body-content__card-image njs-reveal-image" js-reveal>
             <img src="images/body-illustration.jpg" alt="Growing business and brand economics" width="555" height="436" loading="lazy">
           </div>
-          <h3 class="njs-body-content__card-title">GROWING BUSINESS AND BRAND ECONOMICS</h3>
-          <p class="njs-body-content__card-body">We build brands that influence sales, attract talent, and strengthen investor confidence. We align all stakeholders around a singular idea and carry that discipline through every touchpoint. Our work marries strategy and creative to ensure brand functions as a coordinated system, not a collection of disconnected efforts.</p>
+          <div class="njs-body-content__card-text">
+            <h3 class="njs-body-content__card-title">GROWING BUSINESS AND BRAND ECONOMICS</h3>
+            <p class="njs-body-content__card-body">We build brands that influence sales, attract talent, and strengthen investor confidence. We align all stakeholders around a singular idea and carry that discipline through every touchpoint. Our work marries strategy and creative to ensure brand functions as a coordinated system, not a collection of disconnected efforts.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -123,8 +125,9 @@
               <span class="njs-approach__heading-line">And competition</span>
               <span class="njs-approach__heading-line">is everywhere.</span>
             </h2>
-            <div class="njs-approach__circle" js-reveal>
-              <img src="images/approach-circle-man.jpg" alt="Our approach" width="555" height="555" loading="lazy">
+            <div class="njs-approach__circle njs-reveal-image" js-reveal>
+              <img src="images/approach-circle-bg.jpg" alt="" class="njs-approach__circle-bg" loading="lazy">
+              <img src="images/approach-circle-man.jpg" alt="Our approach" class="njs-approach__circle-overlay" loading="lazy">
             </div>
             <div class="njs-approach__body njs-reveal">
               <p>WE DISTILL COMPLICATED INTO THE SINGULAR BECAUSE VALUE CREATION BEGINS WITH CLARITY. WE QUESTION GIVEN ASSUMPTIONS. WE TEST <em>PRODUCT HYPOTHESIS</em>. WE EXPLORE <em>POSSIBLE NARRATIVES</em>. AND WE FOCUS ON <em>WHAT MATTERS MOST</em> &ndash; WHY PEOPLE SHOULD BE COMPELLED BY YOUR EXISTENCE.</p>
@@ -190,10 +193,11 @@
                 <div class="njs-services__item is-active" js-service-item="0">
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
+                      <span class="njs-services__item-number">01</span>
                       <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
                       <span class="njs-services__item-name">CONSULTING</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--right"><img src="images/service-chevron-right.svg" width="40" height="40" alt=""></span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
                   </div>
                   <div class="njs-services__item-detail njs-services__item-detail--mobile">
                     <div class="njs-services__item-detail-inner">
@@ -215,6 +219,7 @@
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
                       <span class="njs-services__item-number">02</span>
+                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
                       <span class="njs-services__item-name">BRANDING</span>
                     </div>
                     <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
@@ -239,6 +244,7 @@
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
                       <span class="njs-services__item-number">03</span>
+                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
                       <span class="njs-services__item-name">EXPERIENCES</span>
                     </div>
                     <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
@@ -336,7 +342,12 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="njs-footer njs-section" id="footer">
-    <div class="njs-footer__top-bar"></div>
+    <div class="njs-footer__top-bar">
+      <div class="njs-footer__top-bar-mark">
+        <span class="njs-footer__top-bar-mark-line"></span>
+        <span class="njs-footer__top-bar-mark-line"></span>
+      </div>
+    </div>
 
     <div class="njs-footer__paisley-bg">
       <img src="images/footer-paisley-bg.png" alt="" role="presentation" loading="lazy">
@@ -382,7 +393,7 @@
       </div>
     </div>
 
-    <div class="njs-footer__wordmark">
+    <div class="njs-footer__wordmark njs-reveal" js-reveal>
       <img src="images/footer-wordmark.svg" alt="Babe Paisley" class="njs-footer__wordmark-img">
     </div>
   </footer>

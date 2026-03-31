@@ -49,7 +49,8 @@ export function initNavOverlay() {
           const target = document.querySelector(href);
           if (target) {
             if (window.__lenis) {
-              window.__lenis.scrollTo(target, { offset: -80 });
+              const headerHeight = document.querySelector('[js-header]')?.offsetHeight || 80;
+              window.__lenis.scrollTo(target, { offset: -headerHeight });
             } else {
               target.scrollIntoView({ behavior: 'smooth' });
             }

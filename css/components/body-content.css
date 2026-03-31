@@ -57,6 +57,13 @@
   display: block;
 }
 
+.njs-body-content__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 555px;
+}
+
 .njs-body-content__card-title {
   font-family: var(--bp-font-monument);
   font-weight: 500;

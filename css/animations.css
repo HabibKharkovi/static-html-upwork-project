@@ -65,6 +65,26 @@
   transform: scale(1);
 }
 
+/* Image scale-reveal animation */
+.njs-reveal-image {
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity var(--bp-duration-slow) var(--bp-ease-out);
+}
+
+.njs-reveal-image img {
+  transform: scale(1.08);
+  transition: transform var(--bp-duration-extra-slow) var(--bp-ease-out-soft);
+}
+
+.njs-reveal-image.is-revealed {
+  opacity: 1;
+}
+
+.njs-reveal-image.is-revealed img {
+  transform: scale(1);
+}
+
 /* Hero word-by-word stagger reveal */
 .njs-hero__word {
   opacity: 0;
@@ -113,8 +133,14 @@
     transition: none !important;
   }
 
-  .njs-scale-reveal img {
+  .njs-scale-reveal img,
+  .njs-reveal-image img {
     transform: none !important;
+    transition: none !important;
+  }
+
+  .njs-reveal-image {
+    opacity: 1 !important;
     transition: none !important;
   }
 

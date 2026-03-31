@@ -48,6 +48,10 @@
     aspect-ratio: 555 / 436;
   }
 
+  .njs-body-content__card-text {
+    width: 450px;
+  }
+
   .njs-body-content__card-title,
   .njs-body-content__card-body {
     width: 450px;
@@ -79,6 +83,10 @@
     width: 100%;
     height: auto;
     aspect-ratio: 555 / 436;
+  }
+
+  .njs-body-content__card-text {
+    width: 100%;
   }
 
   .njs-body-content__card-title,
@@ -128,6 +136,10 @@
     display: none;
   }
 
+  .njs-services__item.is-active .njs-services__item-chevron--down {
+    transform: rotate(180deg);
+  }
+
   .njs-services__scroll-container {
     height: auto;
   }
@@ -135,7 +147,7 @@
   .njs-services__sticky {
     position: relative;
     height: auto;
-    padding: 80px 0;
+    padding: 0;
   }
 
   /* Clients grid: keep 4 columns */
@@ -144,13 +156,22 @@
   }
 
   /* Footer: stack columns */
+  .njs-footer {
+    height: auto;
+  }
+
   .njs-footer__columns {
     flex-direction: column;
     gap: 40px;
   }
 
+  .njs-footer__nav {
+    width: 100%;
+  }
+
   .njs-footer__contact {
     align-items: flex-start;
+    width: 100%;
   }
 
   .njs-footer__nav a,
@@ -202,11 +223,11 @@
   }
 
   .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
-    transform: translateY(5.25px) rotate(45deg);
+    transform: translateY(5px) rotate(45deg);
   }
 
   .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
-    transform: translateY(-5.25px) rotate(-45deg);
+    transform: translateY(-5px) rotate(-45deg);
   }
 
   .njs-hero__title {
@@ -239,6 +260,11 @@
   .njs-body-content__card {
     margin-top: 60px;
     gap: 24px;
+  }
+
+  .njs-body-content__card-text {
+    width: 100%;
+    gap: 20px;
   }
 
   .njs-body-content__card-title {
@@ -281,6 +307,11 @@
 
   .njs-services {
     padding: 60px 20px;
+  }
+
+  .njs-services__label {
+    font-size: 24px;
+    margin-bottom: 60px;
   }
 
   .njs-services__inner {
@@ -405,10 +436,6 @@
 
   .njs-origin__heading-line--pills {
     gap: 12px;
-  }
-
-  .njs-footer__wordmark-text {
-    font-size: clamp(60px, 12vw, 200px);
   }
 
   .njs-footer {
@@ -561,8 +588,8 @@
   }
 
   /* Active chevron rotated on mobile */
-  .njs-services__item.is-active .njs-services__item-chevron--right {
-    transform: rotate(-90deg);
+  .njs-services__item.is-active .njs-services__item-chevron--down {
+    transform: rotate(180deg);
   }
 
   .njs-services__item-header {
@@ -625,10 +652,6 @@
 
   .njs-footer__nav {
     gap: 12px;
-  }
-
-  .njs-footer__wordmark-text {
-    font-size: clamp(40px, 10vw, 120px);
   }
 
   .njs-footer__inner {
