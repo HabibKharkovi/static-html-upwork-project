@@ -650,12 +650,12 @@
     line-height: 70px;
   }
 
-  .njs-footer__nav {
-    gap: 12px;
-  }
-
   .njs-footer__inner {
     padding: 30px 20px;
+  }
+
+  .njs-reveal.is-revealed {
+      transform: translateY(0);
   }
 
   .njs-footer__contact-label,
@@ -677,5 +677,33 @@
 
   .njs-origin__heading-line--pills {
     gap: 8px;
+  }
+
+  .njs-footer .desktop-logo {
+    display: none;
+  }
+  .njs-footer .mobile-logo {
+    display: block;
+  }
+  .njs-footer__contact-info {
+    order: 2;
+  }
+
+  .njs-footer__social {
+    order: 1;
+  }
+  .njs-footer__copyright {
+    display: none;
+  }
+
+  .njs-footer .only-desktop {
+    display: none;
+  }
+
+  .njs-footer .only-mobile {
+    display: block;
+  }
+  .njs-footer__contact-email {
+      text-align: right;
   }
 }
