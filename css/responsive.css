@@ -191,6 +191,10 @@
   .njs-nav-overlay__contact {
     align-items: flex-start;
   }
+  .njs-clients__item img {
+    max-width: 120px;
+    max-height: 70px;
+  }
 }
 
 /* ≤768px — Large phone */
@@ -439,6 +443,25 @@
   .njs-footer {
     min-height: auto;
   }
+  
+  .njs-clients {
+    padding: 40px 0;
+  }
+   
+  .njs-clients__header {
+    padding: 0 20px;
+  }
+
+  .njs-clients__title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .njs-clients__item img,
+  .njs-clients__item svg {
+    max-width: 60px;
+    max-height: 30px; 
+  } 
 }
 
 /* ≤480px — Mobile (Figma 393px values) */
@@ -611,25 +634,6 @@
   .njs-clients__item {
     width: 25%;
     height: 75px;
-  }
-
-  .njs-clients__item img,
-  .njs-clients__item svg {
-    max-width: 60px;
-    max-height: 25px;
-  }
-
-  .njs-clients__header {
-    padding: 0 20px;
-  }
-
-  .njs-clients__title {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .njs-clients {
-    padding: 40px 0;
   }
 
   /* Parallax: full-width square */

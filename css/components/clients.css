@@ -22,6 +22,7 @@
 .njs-clients__title {
   font-family: var(--bp-font-gazpacho);
   font-size: 40px;
+  line-height: 1; 
   font-weight: 400;
   text-transform: uppercase;
   color: #ededed;
@@ -79,3 +80,10 @@
   filter: brightness(0) invert(1);
   transform: scale(1.05);
 }
+
+ .njs-clients__item:nth-child(-n+4) {
+  border-top: unset;
+} 
+.njs-clients__item:nth-last-child(-n+4) {
+  border-bottom: none;
+}   
