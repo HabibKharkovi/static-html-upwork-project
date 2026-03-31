@@ -4,6 +4,10 @@
     font-size: 80px;
   }
 
+  .njs-header__hamburger-line {
+    width: 36px;
+  }
+
   .njs-approach__heading,
   .njs-origin__heading {
     font-size: 120px;
@@ -191,6 +195,10 @@
   .njs-nav-overlay__contact {
     align-items: flex-start;
   }
+  .njs-clients__item img {
+    max-width: 120px;
+    max-height: 70px;
+  }
 }
 
 /* ≤768px — Large phone */
@@ -201,6 +209,16 @@
     --bp-section-pad-y: 60px;
   }
 
+  .njs-header {
+    position: sticky;
+    height: 60px;
+    background-color: #ece6dd;
+  }
+
+  .njs-header.is-nav-open {
+    background-color: transparent;
+  }
+
   /* Header padding scaling */
   .njs-header__inner {
     padding: 0 20px;
@@ -209,31 +227,36 @@
   /* Mobile header: smaller logo & hamburger */
   .njs-header__logo svg,
   .njs-header__logo img {
-    height: 24px;
+    height: 28px;
+    max-width: 40px;
   }
 
   .njs-header__hamburger {
     width: 27px;
-    height: 27px;
+    height: fit-content;
     gap: 9px;
   }
 
   .njs-header__hamburger-line {
     width: 27px;
+    height: 0.75px;
+  }
+
+  .njs-header__hamburger.is-open {
+    gap: 11px;
   }
 
   .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
+    transform: translateY(8px) rotate(46deg);
   }
 
   .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
-    transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-4px) rotate(-48deg);
   }
 
   .njs-hero__title {
     font-size: 40px;
     column-gap: 16px;
-    row-gap: 8px;
   }
 
   .njs-hero__content {
@@ -260,6 +283,7 @@
   .njs-body-content__card {
     margin-top: 60px;
     gap: 24px;
+    padding: 0;
   }
 
   .njs-body-content__card-text {
@@ -273,6 +297,7 @@
 
   .njs-body-content__card-body {
     font-size: 20px;
+    margin-top: 4px;
   }
 
   .njs-approach,
@@ -290,7 +315,6 @@
   .njs-origin__heading {
     font-size: 56px;
     letter-spacing: 2px;
-    gap: 12px;
   }
 
   .njs-approach__body,
@@ -311,7 +335,7 @@
 
   .njs-services__label {
     font-size: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 
   .njs-services__inner {
@@ -437,6 +461,25 @@
   .njs-footer {
     min-height: auto;
   }
+  
+  .njs-clients {
+    padding: 40px 0;
+  }
+   
+  .njs-clients__header {
+    padding: 0 20px;
+  }
+
+  .njs-clients__title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .njs-clients__item img,
+  .njs-clients__item svg {
+    max-width: 60px;
+    max-height: 30px; 
+  } 
 }
 
 /* ≤480px — Mobile (Figma 393px values) */
@@ -450,7 +493,7 @@
   .njs-hero__title {
     font-size: 40px;
     column-gap: 12px;
-    row-gap: 8px;
+    row-gap: 2px;
   }
 
   /* Hero image: full-width square */
@@ -528,6 +571,11 @@
   .njs-approach__circle {
     width: 204px;
     height: 204px;
+    margin-left: 80px;
+  }
+
+  .njs-approach__body {
+    margin-left: 80px;
   }
 
   .njs-approach__body,
@@ -552,7 +600,7 @@
 
   .njs-services__label {
     font-size: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .njs-services__item-name {
@@ -625,25 +673,6 @@
     height: 75px;
   }
 
-  .njs-clients__item img,
-  .njs-clients__item svg {
-    max-width: 60px;
-    max-height: 25px;
-  }
-
-  .njs-clients__header {
-    padding: 0 20px;
-  }
-
-  .njs-clients__title {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .njs-clients {
-    padding: 40px 0;
-  }
-
   /* Parallax: full-width square */
   .njs-parallax {
     height: auto;
@@ -664,12 +693,12 @@
     line-height: 70px;
   }
 
-  .njs-footer__nav {
-    gap: 12px;
-  }
-
   .njs-footer__inner {
     padding: 30px 20px;
+  }
+
+  .njs-reveal.is-revealed {
+      transform: translateY(0);
   }
 
   .njs-footer__contact-label,
@@ -689,4 +718,35 @@
     height: 42px;
   }
 
+  .njs-origin__heading-line--pills {
+    gap: 8px;
+  }
+
+  .njs-footer .desktop-logo {
+    display: none;
+  }
+  .njs-footer .mobile-logo {
+    display: block;
+  }
+  .njs-footer__contact-info {
+    order: 2;
+  }
+
+  .njs-footer__social {
+    order: 1;
+  }
+  .njs-footer__copyright {
+    display: none;
+  }
+
+  .njs-footer .only-desktop {
+    display: none;
+  }
+
+  .njs-footer .only-mobile {
+    display: block;
+  }
+  .njs-footer__contact-email {
+      text-align: right;
+  }
 }

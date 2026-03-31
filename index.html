@@ -1,28 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Babe Paisley — Strategy-Led Branding &amp; Experiences</title>
-  <meta name="description" content="Babe Paisley is a strategy-led branding and experiences company. We make business better through brand.">
+  <meta name="description"
+    content="Babe Paisley is a strategy-led branding and experiences company. We make business better through brand.">
 
   <!-- Preload critical fonts -->
   <link rel="preload" href="fonts/ABCMonumentGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/ABCMonumentGrotesk-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/SchmalfetteGrotesk-Trial.woff2" as="font" type="font/woff2" crossorigin>
 
+  <!-- Loader styles (inline for instant first-paint) -->
+  <style>
+    body.is-loading {
+      overflow: hidden;
+      background-color: #141414;
+    }
+    body.is-loading > *:not(.njs-loader) {
+      visibility: hidden;
+    }
+    .njs-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #141414;
+    }
+    .njs-loader__capsule {
+      position: relative;
+      width: 560px;
+      height: 150px;
+      border-radius: 9999px;
+      background-color: #2d2d32;
+      overflow: hidden;
+    }
+    .njs-loader__fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background-color: #eee2c8;
+      animation: loaderFill 1.8s ease-in-out forwards;
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+    @keyframes loaderFill {
+      0%   { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+    .njs-loader__text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Schmalfette Grotesk Trial Bd Cond', 'Schmalfette Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+      color: #eee2c8;
+      mix-blend-mode: difference;
+      pointer-events: none;
+    }
+    .njs-loader.is-done {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease-out;
+    }
+    @media (max-width: 768px) {
+      .njs-loader__capsule {
+        width: 400px;
+        height: 110px;
+      }
+      .njs-loader__text {
+        font-size: 24px;
+      }
+    }
+    @media (max-width: 480px) {
+      .njs-loader__capsule {
+        width: 280px;
+        height: 80px;
+      }
+      .njs-loader__text {
+        font-size: 18px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .njs-loader__fill {
+        animation-duration: 0.01s;
+      }
+      .njs-loader.is-done {
+        transition-duration: 0.01s;
+      }
+    }
+  </style>
+
   <link rel="stylesheet" href="css/main.css">
 
   <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 </head>
-<body>
+<body class="is-loading">
+
+  <!-- Preloader -->
+  <div class="njs-loader" aria-hidden="true">
+    <div class="njs-loader__capsule">
+      <div class="njs-loader__fill"></div>
+      <div class="njs-loader__text">BABE PAISLEY</div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var start = Date.now();
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var minTime = reducedMotion ? 500 : 2000;
+      var fadeDuration = reducedMotion ? 10 : 600;
+
+      function dismiss() {
+        var elapsed = Date.now() - start;
+        var remaining = Math.max(0, minTime - elapsed);
+        setTimeout(function() {
+          var loader = document.querySelector('.njs-loader');
+          if (!loader) return;
+          loader.classList.add('is-done');
+          setTimeout(function() {
+            loader.remove();
+            document.body.classList.remove('is-loading');
+            window.__loaderDone = true;
+            window.dispatchEvent(new CustomEvent('loaderComplete'));
+          }, fadeDuration);
+        }, remaining);
+      }
+
+      if (document.readyState === 'complete') {
+        dismiss();
+      } else {
+        window.addEventListener('load', dismiss);
+      }
+    })();
+  </script>
 
   <!-- ========== HEADER ========== -->
   <header class="njs-header" js-header>
     <div class="njs-header__inner">
       <a href="#" class="njs-header__logo" aria-label="Babe Paisley home">
-        <img src="images/logo-mark.svg" alt="Babe Paisley" width="53" height="32">
+        <img src="images/Logo.svg" alt="Babe Paisley" width="53" height="32">
       </a>
 
       <button class="njs-header__hamburger" js-nav-toggle aria-label="Toggle navigation" aria-expanded="false">
@@ -38,23 +167,17 @@
       <img src="images/footer-paisley-bg.png" alt="" role="presentation">
     </div>
     <div class="njs-nav-overlay__inner">
-      <div class="njs-nav-overlay__links njs-nav-overlay__links--desktop">
+      <div class="njs-nav-overlay__links">
         <a href="#hero" class="njs-nav-overlay__link" js-nav-link>Home</a>
         <a href="#approach" class="njs-nav-overlay__link" js-nav-link>Approach</a>
         <a href="#origin" class="njs-nav-overlay__link" js-nav-link>Origin</a>
         <a href="#services" class="njs-nav-overlay__link" js-nav-link>Services</a>
         <a href="#clients" class="njs-nav-overlay__link" js-nav-link>Clients</a>
       </div>
-      <div class="njs-nav-overlay__links njs-nav-overlay__links--mobile">
-        <a href="#hero" class="njs-nav-overlay__link" js-nav-link>Home</a>
-        <a href="#" class="njs-nav-overlay__link" js-nav-link>Agency</a>
-        <a href="#origin" class="njs-nav-overlay__link" js-nav-link>Origin</a>
-        <a href="#" class="njs-nav-overlay__link" js-nav-link>About</a>
-        <a href="#" class="njs-nav-overlay__link" js-nav-link>Editorial</a>
-      </div>
       <div class="njs-nav-overlay__contact">
         <p class="njs-nav-overlay__contact-label">GET IN TOUCH:</p>
-        <a href="mailto:experience@babepaisley.com" class="njs-nav-overlay__contact-email">EXPERIENCE@BABEPAISLEY.COM</a>
+        <a href="mailto:experience@babepaisley.com"
+          class="njs-nav-overlay__contact-email">EXPERIENCE@BABEPAISLEY.COM</a>
       </div>
     </div>
   </nav>
@@ -68,16 +191,16 @@
           <span class="njs-hero__word njs-hero__word--regular">WE</span>
           <span class="njs-hero__word njs-hero__word--regular">ARE</span>
           <span class="njs-hero__break" aria-hidden="true"></span>
-          <span class="njs-hero__word njs-hero__word--italic">A</span>
-          <span class="njs-hero__word njs-hero__word--medium">STRATEGY-LED</span>
+          <span class="njs-hero__word njs-hero__word--medium"><span class="njs-hero__word njs-hero__word--regular">A</span> STRATEGY-LED</span>
           <span class="njs-hero__word njs-hero__word--medium">BRANDING</span>
-          <span class="njs-hero__word njs-hero__word--italic">AND</span>
+          <span class="njs-hero__word njs-hero__word--regular">AND</span>
           <span class="njs-hero__word njs-hero__word--medium">EXPERIENCES</span>
-          <span class="njs-hero__word njs-hero__word--regular">COMPANY</span><span class="njs-hero__word njs-hero__word--medium">.</span>
+          <span class="njs-hero__word njs-hero__word--regular">COMPANY</span><span
+            class="njs-hero__word njs-hero__word--medium">.</span>
         </h1>
       </div>
 
-      <div class="njs-hero__image njs-scale-reveal njs-reveal-image" js-reveal>
+      <div class="njs-hero__image" js-reveal>
         <img src="images/hero-image.jpg" alt="Babe Paisley brand experience" width="1440" height="850" loading="eager">
       </div>
     </section>
@@ -86,17 +209,18 @@
     <section class="njs-body-content njs-section" id="about">
       <div class="njs-container">
         <div class="njs-body-content__text">
-          <p class="njs-body-content__heading" js-text-split>
-            <span class="njs-body-content__indent"></span>Founded on the belief that business and brand exist in a balance of one fueling and supporting the other &ndash; we make business better through brand. We operate where strategic clarity, creative and activations come together. Because when direction is sound and alignment is shared, brand becomes a driver of business growth rather than a layer of communication.
+          
+          <p class="njs-body-content__heading" >
+             <span class="njs-body-content__indent"></span>Founded on the belief that business and brand exist in a balance of one fueling and supporting the other &ndash; we make business better through brand. We operate where strategic clarity, creative and activations come together. Because when direction is sound and alignment is shared, brand becomes a driver of business growth rather than a layer of communication.
           </p>
         </div>
 
         <div class="njs-body-content__card">
-          <div class="njs-body-content__card-image njs-reveal-image" js-reveal>
+          <div class="njs-body-content__card-image" js-reveal>
             <img src="images/body-illustration.jpg" alt="Growing business and brand economics" width="555" height="436" loading="lazy">
           </div>
-          <div class="njs-body-content__card-text">
-            <h3 class="njs-body-content__card-title">GROWING BUSINESS AND BRAND ECONOMICS</h3>
+          <div class="njs-body-content__card-content">
+            <h3 class="njs-body-content__card-title">GROWING BUSINESS AND<br> BRAND ECONOMICS</h3>
             <p class="njs-body-content__card-body">We build brands that influence sales, attract talent, and strengthen investor confidence. We align all stakeholders around a singular idea and carry that discipline through every touchpoint. Our work marries strategy and creative to ensure brand functions as a coordinated system, not a collection of disconnected efforts.</p>
           </div>
         </div>
@@ -125,12 +249,13 @@
               <span class="njs-approach__heading-line">And competition</span>
               <span class="njs-approach__heading-line">is everywhere.</span>
             </h2>
-            <div class="njs-approach__circle njs-reveal-image" js-reveal>
-              <img src="images/approach-circle-bg.jpg" alt="" class="njs-approach__circle-bg" loading="lazy">
-              <img src="images/approach-circle-man.jpg" alt="Our approach" class="njs-approach__circle-overlay" loading="lazy">
+            <div class="njs-approach__circle" js-reveal>
+              <img src="images/approach-circle-man.jpg" alt="Our approach" width="555" height="555" loading="lazy">
             </div>
             <div class="njs-approach__body njs-reveal">
-              <p>WE DISTILL COMPLICATED INTO THE SINGULAR BECAUSE VALUE CREATION BEGINS WITH CLARITY. WE QUESTION GIVEN ASSUMPTIONS. WE TEST <em>PRODUCT HYPOTHESIS</em>. WE EXPLORE <em>POSSIBLE NARRATIVES</em>. AND WE FOCUS ON <em>WHAT MATTERS MOST</em> &ndash; WHY PEOPLE SHOULD BE COMPELLED BY YOUR EXISTENCE.</p>
+              <p>WE DISTILL COMPLICATED INTO THE SINGULAR BECAUSE VALUE CREATION BEGINS WITH CLARITY. WE QUESTION GIVEN
+                ASSUMPTIONS. WE TEST <em>PRODUCT HYPOTHESIS</em>. WE EXPLORE <em>POSSIBLE NARRATIVES</em>. AND WE FOCUS
+                ON <em>WHAT MATTERS MOST</em> &ndash; WHY PEOPLE SHOULD BE COMPELLED BY YOUR EXISTENCE.</p>
               <p>WE <strong>CREATE BRAND ECOSYSTEMS</strong> BUILT FOR ADOPTION AND SCALE.</p>
             </div>
           </div>
@@ -157,7 +282,10 @@
             <h2 class="njs-origin__heading" js-reveal>
               <span class="njs-origin__heading-line">ROOTED IN</span>
               <span class="njs-origin__heading-line njs-origin__heading-line--muted">THE OLD SCHOOL</span>
-              <span class="njs-origin__heading-line njs-origin__heading-line--pills">BUT <span class="njs-origin__pill njs-origin__pill--wide"><img src="images/origin-pill-1.jpg" alt="" loading="lazy"></span> <span class="njs-origin__pill njs-origin__pill--circle"><img src="images/origin-pill-2.jpg" alt="" loading="lazy"></span></span>
+              <span class="njs-origin__heading-line njs-origin__heading-line--pills">BUT <span
+                  class="njs-origin__pill njs-origin__pill--wide"><img src="images/origin-pill-1.jpg" alt=""
+                    loading="lazy"></span> <span class="njs-origin__pill njs-origin__pill--circle"><img
+                    src="images/origin-pill-2.jpg" alt="" loading="lazy"></span></span>
               <span class="njs-origin__heading-line">TOTALLY MODERN.</span>
             </h2>
             <div class="njs-origin__body njs-reveal">
@@ -186,11 +314,11 @@
     <section class="njs-services njs-section" id="services" js-services-scroll>
       <div class="njs-services__scroll-container">
         <div class="njs-services__sticky">
+          <div class="njs-services__label">Our Services</div>
           <div class="njs-services__inner">
 
             <!-- Left panel -->
             <div class="njs-services__left">
-              <div class="njs-services__label">Our Services</div>
               <div class="njs-services__list">
 
                 <div class="njs-services__separator"></div>
@@ -200,10 +328,12 @@
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
                       <span class="njs-services__item-number">01</span>
-                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
+                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48"
+                          height="48" alt=""></span>
                       <span class="njs-services__item-name">CONSULTING</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img
+                        src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
                   </div>
                   <div class="njs-services__item-detail njs-services__item-detail--mobile">
                     <div class="njs-services__item-detail-inner">
@@ -211,8 +341,11 @@
                         <img src="images/service-consulting.jpg" width="121" height="91" alt="" loading="lazy">
                       </div>
                       <div class="njs-services__item-detail-text">
-                        <p class="njs-services__item-detail-headline">We establish <strong>alignment</strong> and <strong>strategic clarity</strong>.</p>
-                        <p class="njs-services__item-detail-categories">Category, competitors, insights, segmentation, value proposition</p>
+                        <p class="njs-services__item-detail-headline">We establish <strong>alignment</strong> and
+                          <strong>strategic clarity</strong>.
+                        </p>
+                        <p class="njs-services__item-detail-categories">Category, competitors, insights, segmentation,
+                          value proposition</p>
                       </div>
                     </div>
                   </div>
@@ -225,10 +358,12 @@
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
                       <span class="njs-services__item-number">02</span>
-                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
+                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48"
+                          height="48" alt=""></span>
                       <span class="njs-services__item-name">BRANDING</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img
+                        src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
                   </div>
                   <div class="njs-services__item-detail njs-services__item-detail--mobile">
                     <div class="njs-services__item-detail-inner">
@@ -236,7 +371,9 @@
                         <img src="images/service-branding.jpg" width="121" height="91" alt="" loading="lazy">
                       </div>
                       <div class="njs-services__item-detail-text">
-                        <p class="njs-services__item-detail-headline">We develop <strong>brand foundations</strong> and <strong>visual language</strong>.</p>
+                        <p class="njs-services__item-detail-headline">We develop <strong>brand foundations</strong> and
+                          <strong>visual language</strong>.
+                        </p>
                         <p class="njs-services__item-detail-categories">Architecture, platform, identity, guidelines</p>
                       </div>
                     </div>
@@ -250,10 +387,12 @@
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
                       <span class="njs-services__item-number">03</span>
-                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
+                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48"
+                          height="48" alt=""></span>
                       <span class="njs-services__item-name">EXPERIENCES</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img
+                        src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
                   </div>
                   <div class="njs-services__item-detail njs-services__item-detail--mobile">
                     <div class="njs-services__item-detail-inner">
@@ -261,8 +400,11 @@
                         <img src="images/service-experiences.jpg" width="121" height="91" alt="" loading="lazy">
                       </div>
                       <div class="njs-services__item-detail-text">
-                        <p class="njs-services__item-detail-headline">We bring <strong>strategy to life</strong> through <strong>immersive moments</strong>.</p>
-                        <p class="njs-services__item-detail-categories">Live events, digital, integrated, activations</p>
+                        <p class="njs-services__item-detail-headline">We bring <strong>strategy to life</strong> through
+                          <strong>immersive moments</strong>.
+                        </p>
+                        <p class="njs-services__item-detail-categories">Live events, digital, integrated, activations
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -277,23 +419,31 @@
             <div class="njs-services__visual">
               <div class="njs-services__visual-panel is-active" js-service-visual="0">
                 <div class="njs-services__visual-image">
-                  <img src="images/service-consulting.jpg" alt="Consulting service" width="555" height="416" loading="lazy">
+                  <img src="images/service-consulting.jpg" alt="Consulting service" width="555" height="416"
+                    loading="lazy">
                 </div>
-                <p class="njs-services__visual-headline">WE ESTABLISH <strong>ALIGNMENT</strong> AND <strong>STRATEGIC CLARITY</strong>.</p>
-                <p class="njs-services__visual-categories">Category, competitors, insights, segmentation, value proposition</p>
+                <p class="njs-services__visual-headline">WE ESTABLISH <strong>ALIGNMENT</strong> AND <strong>STRATEGIC
+                    CLARITY</strong>.</p>
+                <p class="njs-services__visual-categories">Category, competitors, insights, segmentation, value
+                  proposition</p>
               </div>
               <div class="njs-services__visual-panel" js-service-visual="1">
                 <div class="njs-services__visual-image">
                   <img src="images/service-branding.jpg" alt="Branding service" width="555" height="416" loading="lazy">
                 </div>
-                <p class="njs-services__visual-headline">WE DEVELOP <strong>BRAND FOUNDATIONS</strong> AND <strong>VISUAL LANGUAGE</strong>.</p>
+                <p class="njs-services__visual-headline">WE DEVELOP <strong>BRAND FOUNDATIONS</strong> AND
+                  <strong>VISUAL LANGUAGE</strong>.
+                </p>
                 <p class="njs-services__visual-categories">Architecture, platform, identity, guidelines</p>
               </div>
               <div class="njs-services__visual-panel" js-service-visual="2">
                 <div class="njs-services__visual-image">
-                  <img src="images/service-experiences.jpg" alt="Experiences service" width="555" height="416" loading="lazy">
+                  <img src="images/service-experiences.jpg" alt="Experiences service" width="555" height="416"
+                    loading="lazy">
                 </div>
-                <p class="njs-services__visual-headline">WE BRING <strong>STRATEGY TO LIFE</strong> THROUGH <strong>IMMERSIVE MOMENTS</strong>.</p>
+                <p class="njs-services__visual-headline">WE BRING <strong>STRATEGY TO LIFE</strong> THROUGH
+                  <strong>IMMERSIVE MOMENTS</strong>.
+                </p>
                 <p class="njs-services__visual-categories">Live events, digital, integrated, activations</p>
               </div>
             </div>
@@ -317,30 +467,46 @@
       </div>
       <div class="njs-clients__grid" js-stagger>
         <!-- Row 1 -->
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-piston-group.png" alt="Piston Group" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-live-nation.png" alt="Live Nation" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-quicken-loans.png" alt="Quicken Loans" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nestle.png" alt="Nestle" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-piston-group.png"
+            alt="Piston Group" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-live-nation.png" alt="Live Nation"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-quicken-loans.png"
+            alt="Quicken Loans" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nestle.png" alt="Nestle"
+            loading="lazy"></div>
         <!-- Row 2 -->
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nokia.png" alt="Nokia" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-amex.png" alt="American Express" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-lincoln.png" alt="Lincoln" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-barefoot-wine.png" alt="Barefoot Wine" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nokia.png" alt="Nokia"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-amex.png" alt="American Express"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-lincoln.png" alt="Lincoln"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-barefoot-wine.png"
+            alt="Barefoot Wine" loading="lazy"></div>
         <!-- Row 3 -->
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-guinness.png" alt="Guinness" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-jeep.png" alt="Jeep" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-louis-vuitton.png" alt="Louis Vuitton" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nfl.png" alt="NFL" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-guinness.png" alt="Guinness"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-jeep.png" alt="Jeep"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-louis-vuitton.png"
+            alt="Louis Vuitton" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nfl.png" alt="NFL" loading="lazy">
+        </div>
         <!-- Row 4 -->
         <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-henry-ford.png" alt="Henry Ford Health" loading="lazy"></div>
         <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-microsoft.png" alt="Microsoft" loading="lazy"></div>
         <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-pepsi.png" alt="Pepsi" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-nestle.png" alt="Nestle" loading="lazy"></div>
         <!-- Row 5 (repeats) -->
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-live-nation.png" alt="Live Nation" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-quicken-loans.png" alt="Quicken Loans" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-piston-group.png" alt="Piston Group" loading="lazy"></div>
-        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-lincoln.png" alt="Lincoln" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-live-nation.png" alt="Live Nation"
+            loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-quicken-loans.png"
+            alt="Quicken Loans" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-piston-group.png"
+            alt="Piston Group" loading="lazy"></div>
+        <div class="njs-clients__item njs-stagger-item"><img src="images/clients/logo-lincoln.png" alt="Lincoln"
+            loading="lazy"></div>
       </div>
     </section>
 
@@ -348,12 +514,7 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="njs-footer njs-section" id="footer">
-    <div class="njs-footer__top-bar">
-      <div class="njs-footer__top-bar-mark">
-        <span class="njs-footer__top-bar-mark-line"></span>
-        <span class="njs-footer__top-bar-mark-line"></span>
-      </div>
-    </div>
+    <div class="njs-footer__top-bar"></div>
 
     <div class="njs-footer__paisley-bg">
       <img src="images/footer-paisley-bg.png" alt="" role="presentation" loading="lazy">
@@ -362,21 +523,13 @@
     <div class="njs-footer__inner">
       <div class="njs-footer__columns">
 
-        <!-- Left: Large nav links (desktop) -->
-        <div class="njs-footer__nav njs-footer__nav--desktop">
+        <!-- Left: Large nav links -->
+        <div class="njs-footer__nav">
           <a href="#hero" class="njs-footer__nav-link">HOME</a>
           <a href="#approach" class="njs-footer__nav-link">APPROACH</a>
           <a href="#origin" class="njs-footer__nav-link">ORIGIN</a>
           <a href="#services" class="njs-footer__nav-link">SERVICES</a>
           <a href="#clients" class="njs-footer__nav-link">CLIENTS</a>
-        </div>
-        <!-- Left: Large nav links (mobile) -->
-        <div class="njs-footer__nav njs-footer__nav--mobile">
-          <a href="#hero" class="njs-footer__nav-link">HOME</a>
-          <a href="#" class="njs-footer__nav-link">AGENCY</a>
-          <a href="#origin" class="njs-footer__nav-link">ORIGIN</a>
-          <a href="#" class="njs-footer__nav-link">ABOUT</a>
-          <a href="#" class="njs-footer__nav-link">EDITORIAL</a>
         </div>
 
         <!-- Right: Contact + socials -->
@@ -384,13 +537,18 @@
           <p class="njs-footer__copyright">&copy; 2026 BABE PAISLEY.&nbsp;&nbsp;&nbsp;ALL RIGHTS RESERVED.</p>
           <div class="njs-footer__contact-info">
             <p class="njs-footer__contact-label">GET IN TOUCH:</p>
-            <a href="mailto:experience@babepaisley.com" class="njs-footer__contact-email">EXPERIENCE@BABEPAISLEY.COM</a>
+            <a href="mailto:experience@babepaisley.com" class="njs-footer__contact-email only-desktop">EXPERIENCE@BABEPAISLEY.COM</a>
+            <a href="mailto:experience@babepaisley.com" class="njs-footer__contact-email only-mobile">
+              EXPERIENCE
+              @BABEPAISLEY.COM</a>
           </div>
           <div class="njs-footer__social">
-            <a href="https://www.instagram.com/babepaisley/" target="_blank" rel="noopener" class="njs-footer__social-icon" aria-label="Instagram">
+            <a href="https://www.instagram.com/babepaisley/" target="_blank" rel="noopener"
+              class="njs-footer__social-icon" aria-label="Instagram">
               <img src="images/icon-instagram.svg" alt="Instagram" width="24" height="24">
             </a>
-            <a href="https://www.linkedin.com/company/babepaisley/" target="_blank" rel="noopener" class="njs-footer__social-icon" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/babepaisley/" target="_blank" rel="noopener"
+              class="njs-footer__social-icon" aria-label="LinkedIn">
               <img src="images/icon-linkedin.svg" alt="LinkedIn" width="24" height="24">
             </a>
           </div>
@@ -400,10 +558,12 @@
     </div>
 
     <div class="njs-footer__wordmark njs-reveal" js-reveal>
-      <img src="images/footer-wordmark.svg" alt="Babe Paisley" class="njs-footer__wordmark-img">
+      <img class="desktop-logo" src="images/footer-wordmark.svg" alt="Babe Paisley" class="njs-footer__wordmark-img">
+      <img class="mobile-logo" src="images/mobile-footer-logo.png" alt="Babe Paisley" class="njs-footer__wordmark-img">
     </div>
   </footer>
 
   <script type="module" src="js/main.js"></script>
 </body>
+
 </html>
