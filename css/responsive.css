@@ -4,6 +4,10 @@
     font-size: 80px;
   }
 
+  .njs-header__hamburger-line {
+    width: 36px;
+  }
+
   .njs-approach__heading,
   .njs-origin__heading {
     font-size: 120px;
@@ -201,6 +205,16 @@
     --bp-section-pad-y: 60px;
   }
 
+  .njs-header {
+    position: sticky;
+    height: 60px;
+    background-color: #ece6dd;
+  }
+
+  .njs-header.is-nav-open {
+    background-color: transparent;
+  }
+
   /* Header padding scaling */
   .njs-header__inner {
     padding: 0 20px;
@@ -209,25 +223,31 @@
   /* Mobile header: smaller logo & hamburger */
   .njs-header__logo svg,
   .njs-header__logo img {
-    height: 24px;
+    height: 28px;
+    max-width: 40px;
   }
 
   .njs-header__hamburger {
     width: 27px;
-    height: 27px;
+    height: fit-content;
     gap: 9px;
   }
 
   .njs-header__hamburger-line {
     width: 27px;
+    height: 0.75px;
+  }
+
+  .njs-header__hamburger.is-open {
+    gap: 11px;
   }
 
   .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
-    transform: translateY(5px) rotate(45deg);
+    transform: translateY(8px) rotate(46deg);
   }
 
   .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
-    transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-4px) rotate(-48deg);
   }
 
   .njs-hero__title {

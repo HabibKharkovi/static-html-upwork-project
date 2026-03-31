@@ -8,8 +8,8 @@
   z-index: 100;
   background-color: transparent;
   transition: transform 0.4s var(--bp-ease-out),
-              background-color 0.4s ease,
-              backdrop-filter 0.4s ease;
+    background-color 0.4s ease,
+    backdrop-filter 0.4s ease;
 }
 
 .njs-header--scrolled {
@@ -40,6 +40,7 @@
 .njs-header__logo img {
   height: 32px;
   width: auto;
+  max-width: 53px;
 }
 
 /* Hamburger: two horizontal lines */
@@ -48,8 +49,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   gap: 12px;
   z-index: 101;
   cursor: pointer;
@@ -60,11 +61,11 @@
 
 .njs-header__hamburger-line {
   display: block;
-  width: 48px;
-  height: 1px;
+  width: 40px;
+  height: 1.1px;
   background-color: var(--bp-black);
   transition: transform 0.4s var(--bp-ease-out),
-              opacity 0.3s var(--bp-ease-out);
+    opacity 0.3s var(--bp-ease-out);
   transform-origin: center;
 }
 
