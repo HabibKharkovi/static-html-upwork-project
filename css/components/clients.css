@@ -66,27 +66,12 @@
   border-right: 0.5px solid #c0bcb9;
 }
 
-/* Logo images: use mask-image with background-color */
-.njs-clients__item img,
-.njs-clients__item svg {
-  max-width: 120px;
-  max-height: 40px;
-  /* Use mask-image approach */
-  background-color: #c0bcb9;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  transition: background-color var(--bp-duration-fast) ease;
-}
-
-/* For inline <img> elements, use filter approach as fallback */
+/* Logo images: filter to #c0bcb9 gray on dark bg */
 .njs-clients__item img {
+  max-width: 160px;
+  max-height: 80px;
   filter: brightness(0) invert(0.78);
-  transition: filter var(--bp-duration-fast) ease,
-              opacity var(--bp-duration-fast) ease;
+  transition: filter var(--bp-duration-fast) ease;
 }
 
 .njs-clients__item:hover img {
