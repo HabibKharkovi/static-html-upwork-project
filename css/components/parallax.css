@@ -1,8 +1,7 @@
 .njs-parallax {
   position: relative;
-  height: 85vh;
+  height: min(85vh, 900px);
   min-height: 500px;
-  max-height: 900px;
   overflow: hidden;
 }
 

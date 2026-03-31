@@ -22,7 +22,7 @@
   <header class="njs-header" js-header>
     <div class="njs-header__inner">
       <a href="#" class="njs-header__logo" aria-label="Babe Paisley home">
-        <img src="images/logo-mark.svg" alt="Babe Paisley" width="40" height="28">
+        <img src="images/logo-mark.svg" alt="Babe Paisley" width="53" height="32">
       </a>
 
       <button class="njs-header__hamburger" js-nav-toggle aria-label="Toggle navigation" aria-expanded="false">
@@ -38,12 +38,19 @@
       <img src="images/footer-paisley-bg.png" alt="" role="presentation">
     </div>
     <div class="njs-nav-overlay__inner">
-      <div class="njs-nav-overlay__links">
+      <div class="njs-nav-overlay__links njs-nav-overlay__links--desktop">
         <a href="#hero" class="njs-nav-overlay__link" js-nav-link>Home</a>
         <a href="#approach" class="njs-nav-overlay__link" js-nav-link>Approach</a>
         <a href="#origin" class="njs-nav-overlay__link" js-nav-link>Origin</a>
         <a href="#services" class="njs-nav-overlay__link" js-nav-link>Services</a>
         <a href="#clients" class="njs-nav-overlay__link" js-nav-link>Clients</a>
+      </div>
+      <div class="njs-nav-overlay__links njs-nav-overlay__links--mobile">
+        <a href="#hero" class="njs-nav-overlay__link" js-nav-link>Home</a>
+        <a href="#" class="njs-nav-overlay__link" js-nav-link>Agency</a>
+        <a href="#origin" class="njs-nav-overlay__link" js-nav-link>Origin</a>
+        <a href="#" class="njs-nav-overlay__link" js-nav-link>About</a>
+        <a href="#" class="njs-nav-overlay__link" js-nav-link>Editorial</a>
       </div>
       <div class="njs-nav-overlay__contact">
         <p class="njs-nav-overlay__contact-label">GET IN TOUCH:</p>
@@ -70,7 +77,7 @@
         </h1>
       </div>
 
-      <div class="njs-hero__image" js-reveal>
+      <div class="njs-hero__image njs-scale-reveal" js-reveal>
         <img src="images/hero-image.jpg" alt="Babe Paisley brand experience" width="1440" height="850" loading="eager">
       </div>
     </section>
@@ -183,10 +190,21 @@
                 <div class="njs-services__item is-active" js-service-item="0">
                   <div class="njs-services__item-header">
                     <div class="njs-services__item-left">
-                      <span class="njs-services__item-icon">&#x2726;</span>
+                      <span class="njs-services__item-icon"><img src="images/service-icon-diamond.svg" width="48" height="48" alt=""></span>
                       <span class="njs-services__item-name">CONSULTING</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--right">&rsaquo;</span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--right"><img src="images/service-chevron-right.svg" width="40" height="40" alt=""></span>
+                  </div>
+                  <div class="njs-services__item-detail njs-services__item-detail--mobile">
+                    <div class="njs-services__item-detail-inner">
+                      <div class="njs-services__item-detail-image">
+                        <img src="images/service-consulting.jpg" width="121" height="91" alt="" loading="lazy">
+                      </div>
+                      <div class="njs-services__item-detail-text">
+                        <p class="njs-services__item-detail-headline">We establish <strong>alignment</strong> and <strong>strategic clarity</strong>.</p>
+                        <p class="njs-services__item-detail-categories">Category, competitors, insights, segmentation, value proposition</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -199,7 +217,18 @@
                       <span class="njs-services__item-number">02</span>
                       <span class="njs-services__item-name">BRANDING</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--down">&#x2304;</span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
+                  </div>
+                  <div class="njs-services__item-detail njs-services__item-detail--mobile">
+                    <div class="njs-services__item-detail-inner">
+                      <div class="njs-services__item-detail-image">
+                        <img src="images/service-branding.jpg" width="121" height="91" alt="" loading="lazy">
+                      </div>
+                      <div class="njs-services__item-detail-text">
+                        <p class="njs-services__item-detail-headline">We develop <strong>brand foundations</strong> and <strong>visual language</strong>.</p>
+                        <p class="njs-services__item-detail-categories">Architecture, platform, identity, guidelines</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -212,7 +241,18 @@
                       <span class="njs-services__item-number">03</span>
                       <span class="njs-services__item-name">EXPERIENCES</span>
                     </div>
-                    <span class="njs-services__item-chevron njs-services__item-chevron--down">&#x2304;</span>
+                    <span class="njs-services__item-chevron njs-services__item-chevron--down"><img src="images/service-chevron-down.svg" width="40" height="40" alt=""></span>
+                  </div>
+                  <div class="njs-services__item-detail njs-services__item-detail--mobile">
+                    <div class="njs-services__item-detail-inner">
+                      <div class="njs-services__item-detail-image">
+                        <img src="images/service-experiences.jpg" width="121" height="91" alt="" loading="lazy">
+                      </div>
+                      <div class="njs-services__item-detail-text">
+                        <p class="njs-services__item-detail-headline">We bring <strong>strategy to life</strong> through <strong>immersive moments</strong>.</p>
+                        <p class="njs-services__item-detail-categories">Live events, digital, integrated, activations</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -305,13 +345,21 @@
     <div class="njs-footer__inner">
       <div class="njs-footer__columns">
 
-        <!-- Left: Large nav links -->
-        <div class="njs-footer__nav">
+        <!-- Left: Large nav links (desktop) -->
+        <div class="njs-footer__nav njs-footer__nav--desktop">
           <a href="#hero" class="njs-footer__nav-link">HOME</a>
           <a href="#approach" class="njs-footer__nav-link">APPROACH</a>
           <a href="#origin" class="njs-footer__nav-link">ORIGIN</a>
           <a href="#services" class="njs-footer__nav-link">SERVICES</a>
           <a href="#clients" class="njs-footer__nav-link">CLIENTS</a>
+        </div>
+        <!-- Left: Large nav links (mobile) -->
+        <div class="njs-footer__nav njs-footer__nav--mobile">
+          <a href="#hero" class="njs-footer__nav-link">HOME</a>
+          <a href="#" class="njs-footer__nav-link">AGENCY</a>
+          <a href="#origin" class="njs-footer__nav-link">ORIGIN</a>
+          <a href="#" class="njs-footer__nav-link">ABOUT</a>
+          <a href="#" class="njs-footer__nav-link">EDITORIAL</a>
         </div>
 
         <!-- Right: Contact + socials -->

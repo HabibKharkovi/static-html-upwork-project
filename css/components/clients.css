@@ -12,8 +12,8 @@
 
 /* Header wrapper */
 .njs-clients__header {
-  width: 1360px;
-  max-width: calc(100% - 80px);
+  width: 100%;
+  max-width: 1440px;
   margin-bottom: 40px;
   padding: 0 40px;
 }

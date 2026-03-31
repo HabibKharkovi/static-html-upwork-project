@@ -148,3 +148,8 @@
   width: 20px;
   height: 20px;
 }
+
+/* Dual nav: mobile links hidden on desktop */
+.njs-nav-overlay__links--mobile {
+  display: none;
+}

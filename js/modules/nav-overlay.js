@@ -13,6 +13,8 @@ export function initNavOverlay() {
     overlay.classList.add('is-open');
     toggle.classList.add('is-open');
     header.classList.add('is-nav-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     if (window.__lenis) window.__lenis.stop();
   }
@@ -22,6 +24,8 @@ export function initNavOverlay() {
     overlay.classList.remove('is-open');
     toggle.classList.remove('is-open');
     header.classList.remove('is-nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     if (window.__lenis) window.__lenis.start();
   }

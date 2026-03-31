@@ -9,6 +9,14 @@ export function initServicesAccordion() {
   let activeIndex = 0;
 
   function setActive(index) {
+    // Mobile toggle-off: tapping active item deactivates it
+    if (!isDesktop() && index === activeIndex && items[index]?.classList.contains('is-active')) {
+      items[index].classList.remove('is-active');
+      visuals.forEach((v) => v.classList.remove('is-active'));
+      activeIndex = -1;
+      return;
+    }
+
     if (index === activeIndex && items[index]?.classList.contains('is-active')) return;
     activeIndex = index;
 

@@ -138,7 +138,7 @@
     padding: 80px 0;
   }
 
-  /* Clients grid: keep 4 columns in flex */
+  /* Clients grid: keep 4 columns */
   .njs-clients__item {
     width: 25%;
   }
@@ -180,6 +180,35 @@
     --bp-section-pad-y: 60px;
   }
 
+  /* Header padding scaling */
+  .njs-header__inner {
+    padding: 0 20px;
+  }
+
+  /* Mobile header: smaller logo & hamburger */
+  .njs-header__logo svg,
+  .njs-header__logo img {
+    height: 24px;
+  }
+
+  .njs-header__hamburger {
+    width: 27px;
+    height: 27px;
+    gap: 9px;
+  }
+
+  .njs-header__hamburger-line {
+    width: 27px;
+  }
+
+  .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
+    transform: translateY(5.25px) rotate(45deg);
+  }
+
+  .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
+    transform: translateY(-5.25px) rotate(-45deg);
+  }
+
   .njs-hero__title {
     font-size: 40px;
     column-gap: 16px;
@@ -200,7 +229,7 @@
   }
 
   .njs-body-content__heading {
-    font-size: 36px;
+    font-size: 30px;
   }
 
   .njs-body-content__indent {
@@ -225,23 +254,29 @@
     padding: 60px 20px;
   }
 
+  /* Approach/origin: tablet transition values */
+  .njs-approach__label,
+  .njs-origin__label {
+    font-size: 24px;
+  }
+
   .njs-approach__heading,
   .njs-origin__heading {
-    font-size: 60px;
+    font-size: 56px;
     letter-spacing: 2px;
     gap: 12px;
   }
 
   .njs-approach__body,
   .njs-origin__body {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 22px;
     text-indent: 60px;
   }
 
   .njs-approach__circle {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
   }
 
   .njs-services {
@@ -274,14 +309,80 @@
     min-height: 300px;
   }
 
+  /* Clients: 4 columns, 100px rows */
+  .njs-clients__item {
+    height: 100px;
+  }
+
   .njs-footer__inner {
     padding: 40px 20px;
+  }
+
+  /* Footer mobile layout */
+  .njs-footer__top-bar {
+    display: none;
+  }
+
+  .njs-footer__nav--desktop {
+    display: none;
+  }
+
+  .njs-footer__nav--mobile {
+    display: flex;
   }
 
   .njs-footer__nav a,
   .njs-footer__nav-link {
     font-size: 44px;
     letter-spacing: 2px;
+  }
+
+  /* Footer mobile: rearrange contact & social */
+  .njs-footer__columns {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .njs-footer__contact {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .njs-footer__social {
+    margin-top: 0;
+  }
+
+  .njs-footer__social a,
+  .njs-footer__social-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .njs-footer__social a svg,
+  .njs-footer__social a img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .njs-footer__copyright {
+    order: 3;
+    width: 100%;
+    border-top: 0.25px solid var(--bp-cream);
+    padding-top: 16px;
+    margin-top: 24px;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+  }
+
+  /* Nav overlay: swap link sets */
+  .njs-nav-overlay__links--desktop {
+    display: none;
+  }
+
+  .njs-nav-overlay__links--mobile {
+    display: flex;
   }
 
   .njs-nav-overlay__link {
@@ -293,13 +394,13 @@
   }
 
   .njs-origin__pill--wide {
-    width: 180px;
-    height: 60px;
+    width: 150px;
+    height: 50px;
   }
 
   .njs-origin__pill--circle {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .njs-origin__heading-line--pills {
@@ -309,76 +410,126 @@
   .njs-footer__wordmark-text {
     font-size: clamp(60px, 12vw, 200px);
   }
+
+  .njs-footer {
+    min-height: auto;
+  }
 }
 
-/* ≤480px — Mobile */
+/* ≤480px — Mobile (Figma 393px values) */
 @media (max-width: 480px) {
   :root {
-    --bp-section-pad-x: 16px;
+    --bp-section-pad-x: 20px;
     --bp-section-pad-y: 40px;
   }
 
+  /* Hero: 40px per Figma */
   .njs-hero__title {
-    font-size: 32px;
+    font-size: 40px;
     column-gap: 12px;
-    row-gap: 6px;
+    row-gap: 8px;
   }
 
+  /* Hero image: full-width square */
   .njs-hero__image {
-    height: 280px;
-    margin: 0 16px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
   }
 
+  /* Body content */
   .njs-body-content {
-    padding: 40px 16px;
+    padding: 40px 20px;
   }
 
   .njs-body-content__heading {
-    font-size: 28px;
+    font-size: 24px;
+    letter-spacing: -0.48px;
   }
 
   .njs-body-content__indent {
-    width: 30px;
+    width: 40px;
+  }
+
+  .njs-body-content__card {
+    margin-top: 40px;
+    gap: 20px;
+    align-items: flex-end;
+  }
+
+  .njs-body-content__card-image {
+    width: 260px;
+    height: 204px;
   }
 
   .njs-body-content__card-title {
-    font-size: 20px;
+    font-size: 14px;
+    width: 260px;
   }
 
   .njs-body-content__card-body {
+    font-size: 13px;
+    width: 260px;
+  }
+
+  /* Approach & Origin: Figma 393px mobile */
+  .njs-approach,
+  .njs-origin {
+    padding: 40px 20px;
+  }
+
+  .njs-approach__inner,
+  .njs-origin__inner {
+    gap: 40px;
+  }
+
+  .njs-approach__label,
+  .njs-origin__label {
     font-size: 16px;
   }
 
-  .njs-approach,
-  .njs-origin {
-    padding: 40px 16px;
+  .njs-approach__label-line,
+  .njs-origin__label-line {
+    display: inline;
   }
 
   .njs-approach__heading,
   .njs-origin__heading {
-    font-size: 44px;
-    letter-spacing: 1px;
+    font-size: 56px;
+    letter-spacing: 2.24px;
     gap: 8px;
+  }
+
+  .njs-approach__circle {
+    width: 204px;
+    height: 204px;
   }
 
   .njs-approach__body,
   .njs-origin__body {
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 20px;
+    width: 260px;
     text-indent: 40px;
+    align-self: flex-end;
   }
 
-  .njs-approach__circle {
-    width: 160px;
-    height: 160px;
+  .njs-approach__content,
+  .njs-origin__content {
+    display: flex;
+    flex-direction: column;
   }
 
+  /* Services: mobile sizes */
   .njs-services {
-    padding: 40px 16px;
+    padding: 40px 20px;
   }
 
   .njs-services__label {
-    font-size: 28px;
+    font-size: 16px;
     margin-bottom: 40px;
   }
 
@@ -392,7 +543,26 @@
   }
 
   .njs-services__item-icon {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  .njs-services__item-icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .njs-services__item-chevron {
+    font-size: 20px;
+  }
+
+  .njs-services__item-chevron img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Active chevron rotated on mobile */
+  .njs-services__item.is-active .njs-services__item-chevron--right {
+    transform: rotate(-90deg);
   }
 
   .njs-services__item-header {
@@ -408,37 +578,53 @@
     padding-left: 30px;
   }
 
-  /* Switch clients to 3 columns */
+  /* Clients: 4 columns per Figma, 75px rows */
   .njs-clients__item {
-    width: 33.333%;
-  }
-
-  .njs-clients__item:not(:nth-child(4n)) {
-    border-right: 0.5px solid #c0bcb9;
-  }
-
-  .njs-clients__item:nth-child(3n) {
-    border-right: none;
+    width: 25%;
+    height: 75px;
   }
 
   .njs-clients__item img,
   .njs-clients__item svg {
-    max-width: 80px;
-    max-height: 30px;
+    max-width: 60px;
+    max-height: 25px;
   }
 
   .njs-clients__header {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
+  .njs-clients__title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .njs-clients {
+    padding: 40px 0;
+  }
+
+  /* Parallax: full-width square */
+  .njs-parallax {
+    height: auto;
+    aspect-ratio: 1;
+    min-height: unset;
+  }
+
+  /* Nav overlay mobile */
   .njs-nav-overlay__link {
     font-size: 36px;
   }
 
+  /* Footer mobile */
   .njs-footer__nav a,
   .njs-footer__nav-link {
-    font-size: 36px;
-    letter-spacing: 1px;
+    font-size: 63px;
+    letter-spacing: 1.26px;
+    line-height: 70px;
+  }
+
+  .njs-footer__nav {
+    gap: 12px;
   }
 
   .njs-footer__wordmark-text {
@@ -446,7 +632,7 @@
   }
 
   .njs-footer__inner {
-    padding: 30px 16px;
+    padding: 30px 20px;
   }
 
   .njs-footer__contact-label,
@@ -455,22 +641,18 @@
     font-size: 16px;
   }
 
+  /* Origin pills: Figma mobile */
   .njs-origin__pill--wide {
-    width: 120px;
-    height: 44px;
+    width: 126px;
+    height: 42px;
   }
 
   .njs-origin__pill--circle {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 
   .njs-origin__heading-line--pills {
     gap: 8px;
-  }
-
-  .njs-parallax {
-    height: 40vh;
-    min-height: 200px;
   }
 }

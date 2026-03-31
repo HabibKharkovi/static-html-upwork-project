@@ -4,6 +4,15 @@ export function initScrollReveal() {
   );
   const staggerContainers = document.querySelectorAll('[js-stagger]');
 
+  // Hero word-by-word stagger: set delays before observer fires
+  const heroTitle = document.querySelector('.njs-hero__title');
+  if (heroTitle) {
+    const heroWords = heroTitle.querySelectorAll('.njs-hero__word');
+    heroWords.forEach((word, i) => {
+      word.style.transitionDelay = `${i * 0.06}s`;
+    });
+  }
+
   // Reveal text and generic elements
   const revealObserver = new IntersectionObserver(
     (entries) => {

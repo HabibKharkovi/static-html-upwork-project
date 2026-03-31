@@ -8,8 +8,8 @@
   z-index: 100;
   background-color: transparent;
   transition: transform 0.4s var(--bp-ease-out),
-              background-color 0.3s ease,
-              backdrop-filter 0.3s ease;
+              background-color 0.3s var(--bp-ease-out),
+              backdrop-filter 0.3s var(--bp-ease-out);
 }
 
 .njs-header--scrolled {
@@ -38,19 +38,19 @@
 
 .njs-header__logo svg,
 .njs-header__logo img {
-  height: 28px;
+  height: 32px;
   width: auto;
 }
 
-/* Hamburger: two horizontal lines, 24px wide, 1.5px thick */
+/* Hamburger: two horizontal lines */
 .njs-header__hamburger {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  gap: 6px;
+  width: 48px;
+  height: 48px;
+  gap: 12px;
   z-index: 101;
   cursor: pointer;
   background: none;
@@ -60,11 +60,11 @@
 
 .njs-header__hamburger-line {
   display: block;
-  width: 24px;
+  width: 48px;
   height: 1.5px;
   background-color: var(--bp-black);
   transition: transform 0.4s var(--bp-ease-out),
-              opacity 0.3s ease;
+              opacity 0.3s var(--bp-ease-out);
   transform-origin: center;
 }
 
@@ -73,13 +73,13 @@
   display: none;
 }
 
-/* Open state: X from two lines */
+/* Open state: X from two lines (gap/2 = 6px + line-height/2 ≈ 6.75px) */
 .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(1) {
-  transform: translateY(3.75px) rotate(45deg);
+  transform: translateY(6.75px) rotate(45deg);
 }
 
 .njs-header__hamburger.is-open .njs-header__hamburger-line:nth-child(2) {
-  transform: translateY(-3.75px) rotate(-45deg);
+  transform: translateY(-6.75px) rotate(-45deg);
 }
 
 /* When nav overlay is open on dark bg */
