@@ -1,6 +1,7 @@
 /* ========== OUR SERVICES ========== */
 .njs-services {
-  background-color: #BDA575; /* var(--bp-gold) */
+  background-color: #BDA575;
+  /* var(--bp-gold) */
   color: var(--bp-black);
   padding: 120px 40px;
   position: relative;
@@ -10,16 +11,17 @@
 
 /* Scroll-driven sticky container */
 .njs-services__scroll-container {
-  height: 300vh;
   position: relative;
 }
 
 .njs-services__sticky {
   position: sticky;
+  max-width: 1440px;
+  margin: 0 auto;
   top: 0;
-  height: 100vh;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -39,16 +41,14 @@
   font-size: 40px;
   text-transform: uppercase;
   margin-bottom: 80px;
+  line-height: 1;
 }
 
 /* Main layout: flex between left accordion and right detail */
 .njs-services__inner {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  gap: 0;
+  gap: 50px;
 }
 
 /* ---- Left panel: 670px ---- */
@@ -125,7 +125,7 @@
   font-weight: 400;
   font-size: 56px;
   text-transform: uppercase;
-  line-height: 56px;
+  line-height: 1;
   opacity: 0.3;
   transition: opacity var(--bp-duration-fast) var(--bp-ease-out);
 }
@@ -150,6 +150,10 @@
   height: 100%;
 }
 
+.njs-services__item.is-active .njs-services__item-chevron {
+  transform: rotate(-90deg);
+}
+
 /* Active chevron: no rotation needed — HTML already uses correct characters */
 
 /* Accordion detail expands under active item */
@@ -157,7 +161,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s var(--bp-ease-out),
-              opacity 0.3s ease;
+    opacity 0.3s ease;
   opacity: 0;
 }
 
@@ -256,6 +260,7 @@
   font-family: var(--bp-font-monument);
   font-weight: 400;
   font-size: 24px;
+  line-height: 1.1;
 }
 
 /* Mobile detail blocks — hidden on desktop */
@@ -270,7 +275,7 @@
     overflow: hidden;
     opacity: 0;
     transition: max-height 0.5s var(--bp-ease-out),
-                opacity 0.3s var(--bp-ease-out);
+      opacity 0.3s var(--bp-ease-out);
   }
 
   .njs-services__item.is-active .njs-services__item-detail--mobile {
@@ -320,8 +325,9 @@
   .njs-services__item-detail-categories {
     font-family: var(--bp-font-monument);
     font-weight: 400;
-    font-size: 12px;
-    color: rgba(20, 20, 20, 0.6);
-    text-transform: uppercase;
+    font-size: 13px;
+    color: #141414;
+    text-transform: initial;
+    line-height: 1.2;
   }
 }
