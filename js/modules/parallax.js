@@ -44,10 +44,7 @@ export function initParallax() {
           (windowHeight + sectionHeight);
         const offset = (progress - 0.5) * sectionHeight * speed;
 
-        // Scale effect: starts at 1.05, reduces to 1.0 as section scrolls through
-        const scale = 1.05 - (progress * 0.05);
-
-        image.style.transform = `translate3d(0, ${offset}px, 0) scale(${scale})`;
+        image.style.transform = `translate3d(0, ${offset}px, 0)`;
       }
     });
   }
