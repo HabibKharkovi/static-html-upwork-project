@@ -237,7 +237,6 @@
   .njs-hero__title {
     font-size: 40px;
     column-gap: 16px;
-    row-gap: 8px;
   }
 
   .njs-hero__content {
@@ -294,7 +293,6 @@
   .njs-origin__heading {
     font-size: 56px;
     letter-spacing: 2px;
-    gap: 12px;
   }
 
   .njs-approach__body,
@@ -315,7 +313,7 @@
 
   .njs-services__label {
     font-size: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 
   .njs-services__inner {
@@ -477,7 +475,7 @@
   .njs-hero__title {
     font-size: 40px;
     column-gap: 12px;
-    row-gap: 8px;
+    row-gap: 2px;
   }
 
   /* Hero image: full-width square */
@@ -533,7 +531,7 @@
 
   .njs-approach__inner,
   .njs-origin__inner {
-    gap: 40px;
+    gap: 20px;
   }
 
   .njs-approach__label,
@@ -550,12 +548,16 @@
   .njs-origin__heading {
     font-size: 56px;
     letter-spacing: 2.24px;
-    gap: 8px;
   }
 
   .njs-approach__circle {
     width: 204px;
     height: 204px;
+    margin-left: 80px;
+  }
+
+  .njs-approach__body {
+    margin-left: 80px;
   }
 
   .njs-approach__body,
@@ -580,7 +582,7 @@
 
   .njs-services__label {
     font-size: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .njs-services__item-name {
@@ -654,12 +656,12 @@
     line-height: 70px;
   }
 
-  .njs-footer__nav {
-    gap: 12px;
-  }
-
   .njs-footer__inner {
     padding: 30px 20px;
+  }
+
+  .njs-reveal.is-revealed {
+      transform: translateY(0);
   }
 
   .njs-footer__contact-label,
@@ -681,5 +683,33 @@
 
   .njs-origin__heading-line--pills {
     gap: 8px;
+  }
+
+  .njs-footer .desktop-logo {
+    display: none;
+  }
+  .njs-footer .mobile-logo {
+    display: block;
+  }
+  .njs-footer__contact-info {
+    order: 2;
+  }
+
+  .njs-footer__social {
+    order: 1;
+  }
+  .njs-footer__copyright {
+    display: none;
+  }
+
+  .njs-footer .only-desktop {
+    display: none;
+  }
+
+  .njs-footer .only-mobile {
+    display: block;
+  }
+  .njs-footer__contact-email {
+      text-align: right;
   }
 }

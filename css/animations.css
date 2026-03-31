@@ -34,7 +34,7 @@
 
 .njs-reveal.is-revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(40px);
 }
 
 /* Stagger items (e.g., client logos) */
