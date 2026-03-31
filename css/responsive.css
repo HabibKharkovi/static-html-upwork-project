@@ -698,7 +698,7 @@
     padding: 30px 20px;
   }
 
-  .njs-reveal.is-revealed {
+  .njs-footer .njs-reveal.is-revealed {
       transform: translateY(0);
   }
 
