@@ -2,7 +2,7 @@
 .njs-origin {
   background-color: #ABB6B3; /* var(--bp-sora) */
   color: var(--bp-black);
-  padding: 120px 40px;
+  padding: 116px 40px;
 }
 
 /* Let the component's own padding take effect */
@@ -28,6 +28,7 @@
 
 .njs-origin__label-line {
   display: block;
+  line-height: 1;
 }
 
 /* Right content column */
@@ -45,13 +46,13 @@
   letter-spacing: 6.4px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 /* Heading lines */
 .njs-origin__heading-line {
   color: #141414;
   display: block;
+  line-height: 0.8;
 }
 
 /* Muted: "THE OLD SCHOOL" */
@@ -125,12 +126,20 @@
   color: #141414;
   width: 785px;
   max-width: 100%;
-  text-indent: 120px;
-  margin: 40px auto 0 auto;
+  margin: 75px 0 0;
 }
-
+.njs-origin__body:last-child {
+  max-width: 776px;
+}
+.njs-origin__body-content {
+  text-indent: 120px;
+  margin-bottom: 30px;
+}
+.njs-origin__body .mobile-only {
+  display: none;
+}
 .njs-origin__body p + p {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .njs-origin__body em,
