@@ -233,7 +233,6 @@
   .njs-hero__title {
     font-size: 40px;
     column-gap: 16px;
-    row-gap: 8px;
   }
 
   .njs-hero__content {
@@ -454,7 +453,7 @@
   .njs-hero__title {
     font-size: 40px;
     column-gap: 12px;
-    row-gap: 8px;
+    row-gap: 2px;
   }
 
   /* Hero image: full-width square */
