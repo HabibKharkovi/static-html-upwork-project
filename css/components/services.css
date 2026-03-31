@@ -19,6 +19,7 @@
   max-width: 1440px;
   margin: 0 auto;
   top: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -205,6 +206,7 @@
   flex-direction: column;
   gap: 40px;
   position: relative;
+  min-height: 460px;
 }
 
 /* Visual panel wraps image + text per service — crossfade */
@@ -222,7 +224,6 @@
 }
 
 .njs-services__visual-panel.is-active {
-  position: relative;
   opacity: 1;
   pointer-events: auto;
 }

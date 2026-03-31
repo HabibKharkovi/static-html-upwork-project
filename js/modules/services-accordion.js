@@ -2,6 +2,7 @@ export function initServicesAccordion() {
   const container = document.querySelector('[js-services-scroll]');
   if (!container) return;
 
+  const scrollContainer = container.querySelector('.njs-services__scroll-container');
   const items = container.querySelectorAll('[js-service-item]');
   const visuals = container.querySelectorAll('[js-service-visual]');
   const isDesktop = () => window.innerWidth > 991;
@@ -40,11 +41,20 @@ export function initServicesAccordion() {
     });
   });
 
+  // Set scroll-container height on desktop so sticky has room to ride
+  function applyDesktopHeight() {
+    if (!scrollContainer) return;
+    if (isDesktop()) {
+      scrollContainer.style.height = items.length * 100 + 'vh';
+    } else {
+      scrollContainer.style.removeProperty('height');
+    }
+  }
+
   // Scroll-triggered behavior on desktop
   function onScroll() {
-    if (!isDesktop()) return;
+    if (!isDesktop() || !scrollContainer) return;
 
-    const scrollContainer = container;
     const rect = scrollContainer.getBoundingClientRect();
     const containerTop = rect.top;
     const containerHeight = scrollContainer.offsetHeight;
@@ -70,13 +80,27 @@ export function initServicesAccordion() {
     }
   }
 
+  // Debounced resize handler
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      applyDesktopHeight();
+      onScroll();
+    }, 150);
+  });
+
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Handle resize
-  window.addEventListener('resize', () => {
-    if (!isDesktop()) {
-      // Reset to click-only mode
-      container.querySelector('.njs-services__scroll-container')?.style.removeProperty('height');
+  // Handle bfcache (back/forward navigation)
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      applyDesktopHeight();
+      onScroll();
     }
   });
+
+  // Init: apply height and evaluate scroll position
+  applyDesktopHeight();
+  onScroll();
 }
