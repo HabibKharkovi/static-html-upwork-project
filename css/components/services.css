@@ -112,7 +112,6 @@
 .njs-services__item.is-active .njs-services__item-icon {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .njs-services__item.is-active .njs-services__item-number {
