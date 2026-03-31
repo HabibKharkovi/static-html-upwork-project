@@ -49,13 +49,12 @@
 .njs-nav-overlay__links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .njs-nav-overlay__link {
   font-family: var(--bp-font-schmalfette);
   font-weight: 700;
-  font-size: 60px;
+  font-size: 100px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--bp-cream);
@@ -128,7 +127,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 16px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s var(--bp-ease-out) 0.4s,

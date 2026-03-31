@@ -38,6 +38,8 @@
       border-radius: 9999px;
       background-color: #2d2d32;
       overflow: hidden;
+      opacity: 0;
+      animation: capsuleEntrance 0.6s ease-out 0.4s forwards;
     }
     .njs-loader__fill {
       position: absolute;
@@ -47,7 +49,7 @@
       height: 100%;
       border-radius: 9999px;
       background-color: #eee2c8;
-      animation: loaderFill 1.8s ease-in-out forwards;
+      animation: loaderFill 2s ease-in-out 1s forwards;
       transform-origin: left center;
       transform: scaleX(0);
     }
@@ -69,10 +71,32 @@
       mix-blend-mode: difference;
       pointer-events: none;
     }
-    .njs-loader.is-done {
+    /* Reveal: Text + fill fade out */
+    .njs-loader.is-revealing .njs-loader__text {
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.6s ease-out;
+      transition: opacity 0.3s ease-out;
+    }
+    .njs-loader.is-revealing .njs-loader__fill {
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+    }
+    /* Keep body dark during clip reveal */
+    body.is-revealing-page {
+      background-color: #141414;
+      overflow: hidden;
+    }
+    /* Page wrapper during clip reveal */
+    .njs-page.is-revealing {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      overflow: hidden;
+      will-change: clip-path;
+      transition: clip-path 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    @keyframes capsuleEntrance {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
     }
     @media (max-width: 768px) {
       .njs-loader__capsule {
@@ -80,7 +104,7 @@
         height: 110px;
       }
       .njs-loader__text {
-        font-size: 24px;
+        font-size: 30px;
       }
     }
     @media (max-width: 480px) {
@@ -89,14 +113,23 @@
         height: 80px;
       }
       .njs-loader__text {
-        font-size: 18px;
+        font-size: 28px;
       }
     }
     @media (prefers-reduced-motion: reduce) {
+      .njs-loader__capsule {
+        animation-duration: 0.01s;
+        animation-delay: 0s;
+      }
       .njs-loader__fill {
         animation-duration: 0.01s;
+        animation-delay: 0s;
       }
-      .njs-loader.is-done {
+      .njs-loader.is-revealing .njs-loader__text,
+      .njs-loader.is-revealing .njs-loader__fill {
+        transition-duration: 0.01s;
+      }
+      .njs-page.is-revealing {
         transition-duration: 0.01s;
       }
     }
@@ -120,22 +153,54 @@
     (function() {
       var start = Date.now();
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var minTime = reducedMotion ? 500 : 2000;
-      var fadeDuration = reducedMotion ? 10 : 600;
+      var minTime = reducedMotion ? 500 : 3000;
+      var revealDuration = reducedMotion ? 10 : 800;
 
       function dismiss() {
         var elapsed = Date.now() - start;
         var remaining = Math.max(0, minTime - elapsed);
         setTimeout(function() {
           var loader = document.querySelector('.njs-loader');
-          if (!loader) return;
-          loader.classList.add('is-done');
+          var page = document.querySelector('.njs-page');
+          var capsule = document.querySelector('.njs-loader__capsule');
+          if (!loader || !page || !capsule) return;
+
+          // Phase 1: Fade text + fill (0.3s)
+          loader.classList.add('is-revealing');
+
           setTimeout(function() {
-            loader.remove();
+            // Phase 2: Read capsule rect, set up clip
+            var rect = capsule.getBoundingClientRect();
+            var vw = window.innerWidth;
+            var vh = window.innerHeight;
+            var radius = rect.height / 2;
+
+            page.style.clipPath = 'inset(' + rect.top + 'px ' + (vw - rect.right) + 'px ' + (vh - rect.bottom) + 'px ' + rect.left + 'px round ' + radius + 'px)';
+            page.classList.add('is-revealing');
+
+            // Make content visible, keep body dark
             document.body.classList.remove('is-loading');
-            window.__loaderDone = true;
-            window.dispatchEvent(new CustomEvent('loaderComplete'));
-          }, fadeDuration);
+            document.body.classList.add('is-revealing-page');
+            loader.style.display = 'none';
+
+            // Phase 3: Animate clip to full viewport (double-rAF ensures initial clip is painted first)
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                page.style.clipPath = 'inset(0px 0px 0px 0px round 0px)';
+              });
+            });
+
+            // Phase 4: Cleanup after animation
+            setTimeout(function() {
+              page.classList.remove('is-revealing');
+              page.style.clipPath = '';
+              document.body.classList.remove('is-revealing-page');
+              loader.remove();
+              window.__loaderDone = true;
+              window.dispatchEvent(new CustomEvent('loaderComplete'));
+            }, revealDuration + 50);
+
+          }, 300);
         }, remaining);
       }
 
@@ -147,6 +212,7 @@
     })();
   </script>
 
+  <div class="njs-page">
   <!-- ========== HEADER ========== -->
   <header class="njs-header" js-header>
     <div class="njs-header__inner">
@@ -562,6 +628,7 @@
       <img class="mobile-logo" src="images/mobile-footer-logo.png" alt="Babe Paisley" class="njs-footer__wordmark-img">
     </div>
   </footer>
+  </div>
 
   <script type="module" src="js/main.js"></script>
 </body>
