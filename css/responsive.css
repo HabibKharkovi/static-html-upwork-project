@@ -260,6 +260,7 @@
   .njs-body-content__card {
     margin-top: 60px;
     gap: 24px;
+    padding: 0;
   }
 
   .njs-body-content__card-text {
@@ -273,6 +274,7 @@
 
   .njs-body-content__card-body {
     font-size: 20px;
+    margin-top: 4px;
   }
 
   .njs-approach,
