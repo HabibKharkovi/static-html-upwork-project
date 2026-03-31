@@ -6,21 +6,19 @@ import { initScrollReveal } from './modules/scroll-reveal.js';
 import { initParallax } from './modules/parallax.js';
 import { initServicesAccordion } from './modules/services-accordion.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize smooth scroll first
+function initApp() {
   initSmoothScroll();
-
-  // Header and navigation
   initHeader();
   initNavOverlay();
-
-  // Text splitting must happen before scroll reveal
   initTextSplit();
-
-  // Scroll-based animations
   initScrollReveal();
   initParallax();
-
-  // Interactive components
   initServicesAccordion();
-});
+}
+
+// Wait for loader to complete before initializing
+if (window.__loaderDone) {
+  initApp();
+} else {
+  window.addEventListener('loaderComplete', initApp, { once: true });
+}
