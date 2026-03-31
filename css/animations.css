@@ -34,6 +34,10 @@
 
 .njs-reveal.is-revealed {
   opacity: 1;
+  transform: translateY(0px);
+}
+
+.njs-footer .njs-reveal.is-revealed {
   transform: translateY(40px);
 }
 
