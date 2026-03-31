@@ -510,7 +510,7 @@
 
   .njs-approach__inner,
   .njs-origin__inner {
-    gap: 40px;
+    gap: 20px;
   }
 
   .njs-approach__label,
@@ -533,6 +533,7 @@
   .njs-approach__circle {
     width: 204px;
     height: 204px;
+    margin-left: 40px;
   }
 
   .njs-approach__body,
