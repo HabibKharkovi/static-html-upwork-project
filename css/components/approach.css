@@ -71,7 +71,7 @@
   height: 555px;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: 80px;
+  margin: 80px auto 0 auto;
 }
 
 .njs-approach__circle img {
@@ -92,7 +92,7 @@
   width: 785px;
   max-width: 100%;
   text-indent: 120px;
-  margin-top: 40px;
+  margin: 40px auto 0 auto;
 }
 
 .njs-approach__body p + p {

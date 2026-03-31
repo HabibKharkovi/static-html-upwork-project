@@ -137,10 +137,7 @@
   transition: transform var(--bp-duration-fast) ease;
 }
 
-/* Inactive: down arrow (v) — Active: right arrow (>) rotated */
-.njs-services__item.is-active .njs-services__item-chevron {
-  transform: rotate(-90deg);
-}
+/* Active chevron: no rotation needed — HTML already uses correct characters */
 
 /* Accordion detail expands under active item */
 .njs-services__item-detail {

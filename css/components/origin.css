@@ -126,7 +126,7 @@
   width: 785px;
   max-width: 100%;
   text-indent: 120px;
-  margin-top: 40px;
+  margin: 40px auto 0 auto;
 }
 
 .njs-origin__body p + p {

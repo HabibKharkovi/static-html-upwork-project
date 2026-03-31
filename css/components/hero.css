@@ -25,6 +25,13 @@
   text-align: left;
 }
 
+/* Force line break after "ARE" so "A" starts line 2 */
+.njs-hero__break {
+  flex-basis: 100%;
+  height: 0;
+  margin: -8px 0;
+}
+
 /* Base word span */
 .njs-hero__word {
   display: inline-block;
