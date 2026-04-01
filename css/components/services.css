@@ -94,15 +94,22 @@
   font-weight: 400;
   font-size: 40px;
   min-width: 48px;
-  transition: opacity var(--bp-duration-fast) var(--bp-ease-out);
+  transition: opacity 0.4s var(--bp-ease-out);
 }
 
-/* Icon (diamond) for active item: 48px */
+/* Icon (diamond) for active item: 48px — overlaps number with crossfade */
 .njs-services__item-icon {
-  display: none;
+  position: absolute;
+  left: 0;
   width: 48px;
   height: 48px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s var(--bp-ease-out),
+    transform 0.4s var(--bp-ease-out);
 }
 
 .njs-services__item-icon img {
@@ -110,13 +117,17 @@
   height: 100%;
 }
 
+.njs-services__item-left {
+  position: relative;
+}
+
 .njs-services__item.is-active .njs-services__item-icon {
-  display: flex;
-  align-items: center;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .njs-services__item.is-active .njs-services__item-number {
-  display: none;
+  opacity: 0;
 }
 
 /* Service name: ABC Monument Grotesk Regular, 56px, uppercase */
@@ -127,7 +138,7 @@
   text-transform: uppercase;
   line-height: 1;
   opacity: 0.3;
-  transition: opacity var(--bp-duration-fast) var(--bp-ease-out);
+  transition: opacity 0.4s var(--bp-ease-out);
 }
 
 .njs-services__item.is-active .njs-services__item-name {
@@ -142,7 +153,7 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  transition: transform var(--bp-duration-fast) var(--bp-ease-out);
+  transition: transform 0.4s var(--bp-ease-out);
 }
 
 .njs-services__item-chevron img {
@@ -158,15 +169,20 @@
 
 /* Accordion detail expands under active item */
 .njs-services__item-detail {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   overflow: hidden;
-  transition: max-height 0.5s var(--bp-ease-out),
-    opacity 0.3s ease;
+  transition: grid-template-rows 0.5s var(--bp-ease-out),
+    opacity 0.4s var(--bp-ease-out);
   opacity: 0;
 }
 
+.njs-services__item-detail > * {
+  overflow: hidden;
+}
+
 .njs-services__item.is-active .njs-services__item-detail {
-  max-height: 300px;
+  grid-template-rows: 1fr;
   opacity: 1;
 }
 
@@ -209,14 +225,16 @@
   min-height: 460px;
 }
 
-/* Visual panel wraps image + text per service — crossfade */
+/* Visual panel wraps image + text per service — crossfade with slide */
 .njs-services__visual-panel {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   opacity: 0;
-  transition: opacity 0.4s var(--bp-ease-out);
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--bp-ease-out),
+    transform 0.5s var(--bp-ease-out);
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -225,6 +243,7 @@
 
 .njs-services__visual-panel.is-active {
   opacity: 1;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
@@ -270,16 +289,20 @@
 
 @media (max-width: 991px) {
   .njs-services__item-detail--mobile {
-    display: block;
-    max-height: 0;
+    display: grid;
+    grid-template-rows: 0fr;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.5s var(--bp-ease-out),
-      opacity 0.3s var(--bp-ease-out);
+    transition: grid-template-rows 0.5s var(--bp-ease-out),
+      opacity 0.4s var(--bp-ease-out);
+  }
+
+  .njs-services__item-detail--mobile > * {
+    overflow: hidden;
   }
 
   .njs-services__item.is-active .njs-services__item-detail--mobile {
-    max-height: 300px;
+    grid-template-rows: 1fr;
     opacity: 1;
   }
 

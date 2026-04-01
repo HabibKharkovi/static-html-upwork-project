@@ -2,19 +2,27 @@
   position: relative;
   height: 900px;
   overflow: hidden;
+  background-color: #141414;
 }
 
 .njs-parallax__image {
   position: absolute;
-  top: -10%;
+  top: -350px;
   left: 0;
   width: 100%;
-  height: 120%;
-  will-change: transform;
+  height: calc(100% + 700px);
+  will-change: transform, opacity;
 }
 
 .njs-parallax__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .njs-parallax__image {
+    top: -150px;
+    height: calc(100% + 300px);
+  }
 }

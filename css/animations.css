@@ -159,4 +159,13 @@
     clip-path: none !important;
     transition: none !important;
   }
+
+  .njs-parallax__image {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .njs-hero {
+    position: relative !important;
+  }
 }

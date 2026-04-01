@@ -142,3 +142,25 @@
   vertical-align: middle;
   margin: 0 0.1em;
 }
+
+/* Hero pin — desktop only */
+@media (min-width: 769px) {
+  .njs-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .njs-body-content,
+  .njs-parallax,
+  .njs-approach,
+  .njs-origin,
+  .njs-services,
+  .njs-clients,
+  .njs-footer {
+    position: relative;
+    z-index: 2;
+  }
+}

@@ -209,6 +209,10 @@
     --bp-section-pad-y: 60px;
   }
 
+  .njs-hero-spacer {
+    display: none;
+  }
+
   .njs-header {
     position: sticky;
     height: 60px;

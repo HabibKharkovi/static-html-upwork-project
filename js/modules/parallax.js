@@ -1,13 +1,102 @@
 export function initParallax() {
-  const parallaxSections = document.querySelectorAll('[js-parallax]');
-  if (!parallaxSections.length) return;
+  initHeroPin();
+  initParallaxSections();
+  initApproachCircles();
+}
 
-  const speed = 0.2;
+function initHeroPin() {
+  const hero = document.querySelector('.njs-hero');
+  if (!hero) return;
+
+  const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktop = window.matchMedia('(min-width: 769px)');
+
+  if (!motionOk) return;
+
+  let spacer = null;
+  let resizeObserver = null;
+
+  function createSpacer() {
+    if (spacer) return;
+    spacer = document.createElement('div');
+    spacer.className = 'njs-hero-spacer';
+    spacer.style.height = hero.offsetHeight + 'px';
+    hero.after(spacer);
+
+    resizeObserver = new ResizeObserver(() => {
+      if (spacer) {
+        spacer.style.height = hero.offsetHeight + 'px';
+      }
+    });
+    resizeObserver.observe(hero);
+  }
+
+  function removeSpacer() {
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+    if (spacer) {
+      spacer.remove();
+      spacer = null;
+    }
+  }
+
+  function handleBreakpoint(e) {
+    if (e.matches) {
+      createSpacer();
+    } else {
+      removeSpacer();
+    }
+  }
+
+  // Initial check
+  handleBreakpoint(isDesktop);
+
+  // Listen for breakpoint changes
+  isDesktop.addEventListener('change', handleBreakpoint);
+}
+
+function initParallaxSections() {
+  const sections = document.querySelectorAll('[js-parallax]');
+  if (!sections.length) return;
+
+  const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!motionOk) return;
+
+  const isMobile = window.innerWidth <= 768;
+  const travel = isMobile ? 150 : 350;
+
+  sections.forEach((section) => {
+    const image = section.querySelector('.njs-parallax__image');
+    if (!image) return;
+
+    gsap.fromTo(image,
+      { y: travel, opacity: 0.5 },
+      {
+        y: -travel,
+        opacity: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      }
+    );
+  });
+}
+
+function initApproachCircles() {
+  const circles = document.querySelectorAll('.njs-approach__circle');
+  if (!circles.length) return;
+
   let ticking = false;
 
-  function updateApproachCircles(windowHeight) {
-    const circles = document.querySelectorAll('.njs-approach__circle');
-    circles.forEach(circle => {
+  function update() {
+    const windowHeight = window.innerHeight;
+    circles.forEach((circle) => {
       const rect = circle.getBoundingClientRect();
       if (rect.top < windowHeight && rect.bottom > 0) {
         const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
@@ -19,40 +108,10 @@ export function initParallax() {
     });
   }
 
-  function updateParallax() {
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-
-    updateApproachCircles(windowHeight);
-
-    parallaxSections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top + scrollY;
-      const sectionHeight = rect.height;
-
-      // Only process if section is in or near viewport
-      if (
-        scrollY + windowHeight > sectionTop - 200 &&
-        scrollY < sectionTop + sectionHeight + 200
-      ) {
-        const image = section.querySelector('.njs-parallax__image');
-        if (!image) return;
-
-        // Calculate how far through the section the scroll is
-        const progress =
-          (scrollY + windowHeight - sectionTop) /
-          (windowHeight + sectionHeight);
-        const offset = (progress - 0.5) * sectionHeight * speed;
-
-        image.style.transform = `translate3d(0, ${offset}px, 0)`;
-      }
-    });
-  }
-
   function onScroll() {
     if (!ticking) {
       requestAnimationFrame(() => {
-        updateParallax();
+        update();
         ticking = false;
       });
       ticking = true;
@@ -60,5 +119,5 @@ export function initParallax() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  updateParallax();
+  update();
 }
