@@ -27,9 +27,14 @@ body {
   background-color: var(--bp-off-white);
   line-height: 1.5;
   overflow-x: hidden;
+  background-color: #141414;
 }
 
 ::selection {
   background-color: var(--bp-gold);
   color: var(--bp-black);
+}
+
+#about {
+  opacity: 0;
 }

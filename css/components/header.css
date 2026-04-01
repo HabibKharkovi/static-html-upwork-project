@@ -110,3 +110,9 @@
 .njs-header.is-nav-open .njs-header__logo img {
   filter: invert(1);
 }
+
+.njs-header.is-nav-open {
+  background-color: transparent;
+  position: fixed;
+  backdrop-filter: none;
+}

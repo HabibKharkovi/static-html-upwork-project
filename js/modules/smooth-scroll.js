@@ -1,4 +1,11 @@
 export function initSmoothScroll() {
+
+  if(document.getElementById('about')) {
+    setTimeout(() => {
+      document.getElementById('about').style.opacity = 1;
+    }, 1000)
+  }
+
   gsap.registerPlugin(ScrollTrigger);
 
   const lenis = new Lenis({
