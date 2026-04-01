@@ -224,3 +224,39 @@
 .njs-footer .only-mobile {
   display: none;
 }
+
+/* Footer reveal wrapper */
+.njs-footer-wrapper {
+  position: relative;
+  padding-bottom: 100vh;
+}
+
+/* Footer fixed at bottom during reveal */
+@media (min-width: 769px) {
+  .njs-footer-wrapper .njs-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transform: translateY(100%);
+    transition: transform 0.1s linear;
+  }
+
+  .njs-footer-wrapper .njs-footer.is-active {
+    transform: translateY(0);
+  }
+}
+
+/* Footer overlay for fade effect */
+.njs-footer__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2D2D32;
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.1s linear;
+}

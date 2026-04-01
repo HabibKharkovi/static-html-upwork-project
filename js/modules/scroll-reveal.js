@@ -13,13 +13,20 @@ export function initScrollReveal() {
     });
   }
 
-  // Reveal text and generic elements
+  // Hero elements use once-only reveal (fixed position, always in viewport)
+  const heroSection = document.querySelector('.njs-hero');
+
+  // Reveal text and generic elements — replay on scroll
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-revealed');
-          revealObserver.unobserve(entry.target);
+        } else {
+          // Don't remove from hero elements (they're fixed and always visible)
+          if (!heroSection || !heroSection.contains(entry.target)) {
+            entry.target.classList.remove('is-revealed');
+          }
         }
       });
     },
@@ -31,7 +38,7 @@ export function initScrollReveal() {
 
   revealElements.forEach((el) => revealObserver.observe(el));
 
-  // Stagger children reveal
+  // Stagger children reveal — replay on scroll
   const staggerObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -41,7 +48,11 @@ export function initScrollReveal() {
             item.style.setProperty('--item-index', i);
             item.classList.add('is-revealed');
           });
-          staggerObserver.unobserve(entry.target);
+        } else {
+          const items = entry.target.querySelectorAll('.njs-stagger-item');
+          items.forEach((item) => {
+            item.classList.remove('is-revealed');
+          });
         }
       });
     },

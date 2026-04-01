@@ -22,6 +22,24 @@
   transform: translateY(-100%);
 }
 
+.njs-header--up {
+  position: sticky;
+  transform: translateY(0);
+  animation: headslide 0.4s var(--bp-ease-out);
+  background-color: rgba(237, 237, 237, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.njs-header--up .njs-header__inner {
+  opacity: 1 !important;
+}
+
+@keyframes headslide {
+  from { top: -80px; }
+  to { top: 0; }
+}
+
 .njs-header__inner {
   display: flex;
   align-items: center;

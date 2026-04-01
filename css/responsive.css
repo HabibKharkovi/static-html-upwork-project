@@ -467,6 +467,15 @@
   .njs-footer {
     min-height: auto;
   }
+
+  .njs-footer-wrapper {
+    padding-bottom: 0;
+  }
+
+  .njs-footer-wrapper .njs-footer {
+    position: relative;
+    transform: none;
+  }
   
   .njs-clients {
     padding: 40px 0;

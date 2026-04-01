@@ -11,7 +11,7 @@
   left: 0;
   width: 100%;
   height: calc(100% + 700px);
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .njs-parallax__image img {

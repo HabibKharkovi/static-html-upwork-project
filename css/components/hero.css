@@ -2,6 +2,7 @@
 .njs-hero {
   background-color: var(--bp-hero-bg); /* #ECE6DD */
   overflow: hidden;
+  will-change: transform;
 }
 
 .njs-hero__content {
@@ -129,6 +130,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 40px;
+  overflow: hidden;
 }
 
 .njs-hero__wordmark-text span {
@@ -159,6 +161,7 @@
   .njs-origin,
   .njs-services,
   .njs-clients,
+  .njs-footer-wrapper,
   .njs-footer {
     position: relative;
     z-index: 2;

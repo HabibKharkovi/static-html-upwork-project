@@ -23,9 +23,16 @@ export function initHeader() {
       // Hide/show based on scroll direction
       if (Math.abs(currentScrollY - lastScrollY) > threshold) {
         if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          // Scrolling down
           header.classList.add('njs-header--hidden');
+          header.classList.remove('njs-header--up');
+        } else if (currentScrollY < lastScrollY && currentScrollY > 200) {
+          // Scrolling up — sticky slide-in
+          header.classList.remove('njs-header--hidden');
+          header.classList.add('njs-header--up');
         } else {
           header.classList.remove('njs-header--hidden');
+          header.classList.remove('njs-header--up');
         }
         lastScrollY = currentScrollY;
       }
