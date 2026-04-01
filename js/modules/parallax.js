@@ -138,7 +138,10 @@ function initParallaxSections() {
       // Only animate when section is near viewport
       if (rect.bottom > 0 && rect.top < window.innerHeight) {
         const offset = (scrollY - sectionTop) * (1 - speed);
+        const progress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
+        const opacity = 0.5 + progress * 0.5;
         image.style.transform = 'translate3d(0, ' + offset + 'px, 0)';
+        image.style.opacity = opacity;
       }
     });
   }
@@ -202,6 +205,9 @@ function initFooterReveal() {
   const isDesktop = window.matchMedia('(min-width: 769px)');
 
   if (!motionOk || !isDesktop.matches) return;
+
+  // Set overlay visible for desktop scroll reveal (CSS defaults to opacity: 0)
+  if (overlay) overlay.style.opacity = '1';
 
   let ticking = false;
 

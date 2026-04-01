@@ -476,6 +476,10 @@
     position: relative;
     transform: none;
   }
+
+  .njs-footer__overlay {
+    display: none;
+  }
   
   .njs-clients {
     padding: 40px 0;
