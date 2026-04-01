@@ -47,7 +47,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 9999px;
       background-color: #eee2c8;
       animation: loaderFill 2s ease-in-out 1s forwards;
       transform-origin: left center;
@@ -55,6 +54,8 @@
     }
     @keyframes loaderFill {
       0%   { transform: scaleX(0); }
+      30%   { transform: scaleX(0.50); }
+      70%   { transform: scaleX(0.7); }
       100% { transform: scaleX(1); }
     }
     .njs-loader__text {
